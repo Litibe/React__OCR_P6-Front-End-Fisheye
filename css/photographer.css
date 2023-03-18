@@ -1,4 +1,9 @@
-@import url("variables.css");
+:root {
+  --main-color: #901c1c;
+  --secondary-color: #d3573c;
+  --light-color: #757575;
+}
+
 #contact_modal {
   display: none;
 }
@@ -7,6 +12,44 @@
   background-color: #fafafa;
   height: 300px;
   margin: 0 100px;
+  display: grid;
+  grid-template-columns: 1fr 170px 1fr;
+}
+.photograph-header-details {
+  margin: 0;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.photograph-header-details h1 {
+  color: var(--secondary-color);
+  font-size: 64px;
+  margin: 0;
+}
+.photographer-city {
+  color: var(--main-color);
+  font-size: 32px;
+  line-height: 26px;
+  margin: 0;
+}
+.photographer-tagline {
+  font-size: 18px;
+  line-height: 23px;
+  padding: 19px 0;
+}
+.photograph-header-img img {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid transparent;
+  transition: all ease-in-out 400ms;
+  position: relative;
+  float: right;
+  margin-top: 50px;
+  margin-right: 50px;
 }
 
 .contact_button {
@@ -20,6 +63,8 @@
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+  display: block;
+  margin: auto;
 }
 
 .modal {
