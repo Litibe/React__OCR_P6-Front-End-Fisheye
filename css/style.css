@@ -20,10 +20,16 @@ header {
   top: 0px;
   background-color: white;
 }
+header a {
+  width: fit-content;
+}
 
 h1 {
   color: var(--main-color);
   margin-right: 100px;
+}
+a:focus {
+  border: #757575 solid 3px;
 }
 
 .logo {
@@ -81,11 +87,13 @@ h1 {
   color: var(--main-color);
   line-height: 12px;
   margin: 3px;
+  font-size: 13px;
 }
 .photographer-tagline {
   line-height: 13px;
   margin: 3px;
   font-size: 10px;
+  padding: 0;
 }
 .photographer-price {
   color: var(--light-color);

@@ -18,22 +18,45 @@
   <main id="main">
     <div class="photograph-header">
       <div class="photograph-header-details"> </div>
-      <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+      <button class="contact_button" onclick="displayModal()"
+        arial-label="Ouvrir formulaire de contact">Contactez-moi</button>
       <div class="photograph-header-img"> </div>
     </div>
   </main>
   <div id="contact_modal">
     <div class="modal">
-      <header>
+      <div class="modal-header">
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" alt="bouton fermeture" onclick="closeModal()" />
-      </header>
+        <div alt="bouton fermeture" onclick="closeModal()" role="button"><img src="assets/icons/close.svg" /></div>
+      </div>
       <form>
-        <div>
-          <label>Prénom</label>
-          <input />
+        <div class="formData namePhotographer"></div>
+        <div class="formData">
+          <label for="firstname">Prénom</label>
+          <input class="text-control" type="text" id="firstname" name="firstname" autocomplete="given-name" autofocus
+            onchange="checkInputText(this)" required placeholder="ex: John">
         </div>
-        <button class="contact_button">Envoyer</button>
+        <div class="formData">
+          <label for="lastname">Nom</label>
+          <input class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
+            onchange="checkInputText(this)" required placeholder="ex: Doe">
+        </div>
+        <div class="formData">
+          <label for="email">E-mail</label>
+          <input class="text-control" type="email" id="email" name="email" autocomplete="email"
+            onchange="checkValueEmail(this)" required placeholder="ex: adresse@domaine.fr">
+        </div>
+        <div class="formData">
+          <label for="email">E-mail</label>
+          <input class="text-control" type="email" id="email" name="email" autocomplete="email"
+            onchange="checkValueEmail(this)" required placeholder="ex: adresse@domaine.fr">
+        </div>
+        <div class="formData">
+          <label for="msg">Votre message</label>
+          <textarea class="text-area" id="msg" name="msg" required rows="5"
+            placeholder="ex: Je souhaite un renseignement sur ..."></textarea>
+        </div>
+        <button class="send_button">Envoyer</button>
       </form>
     </div>
   </div>
