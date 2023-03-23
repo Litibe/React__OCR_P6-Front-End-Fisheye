@@ -1,32 +1,36 @@
-@import url("photographer.css");
 :root {
   --main-color: #901c1c;
   --secondary-color: #d3573c;
   --light-color: #757575;
 }
+html {
+  display: flex;
+  justify-content: center;
+}
 
 body {
   font-family: "DM Sans", sans-serif;
   margin: 0;
+  padding: 0;
+  max-width: 1440px;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+nav {
   height: 90px;
   position: sticky;
-  top: 0px;
-  background-color: white;
+  top: 0;
 }
-header a {
-  width: fit-content;
+nav a {
+  width: 0px;
+  padding: 0;
+  position: relative;
+  top: 20px;
 }
 
-h1 {
+.title_homepage {
   color: var(--main-color);
-  margin-right: 100px;
+  float: right;
+  margin-top: 30px;
 }
 a:focus {
   border: #757575 solid 3px;
@@ -34,7 +38,6 @@ a:focus {
 
 .logo {
   height: 50px;
-  margin-left: 100px;
 }
 
 .photographer_section {

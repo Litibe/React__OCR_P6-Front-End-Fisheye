@@ -1,8 +1,14 @@
+@import url("style.css");
+
 :root {
   --main-color: #901c1c;
   --secondary-color: #d3573c;
   --light-color: #757575;
   --bg-modal: #db8876;
+}
+.logo {
+  height: 50px;
+  margin-left: 100px;
 }
 
 #contact_modal {
@@ -232,4 +238,56 @@ input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: red;
+}
+
+.photograph-content {
+  margin: 20px 100px;
+}
+
+.photograph-content-list {
+  margin: 20px 0px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 90px;
+}
+.article__div-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  padding-right: 5px;
+  margin: 0;
+  color: var(--main-color);
+}
+.article__div-title span {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: no;
+}
+.article__div-title span i {
+  margin-left: 3px;
+  margin-top: 3px;
+}
+.article__video {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.article__img {
+  width: 350px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.article__img-title {
+  font-size: 24px;
+}
+
+.total__likes {
+  background-color: var(--bg-modal);
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  padding: 0 20px;
 }

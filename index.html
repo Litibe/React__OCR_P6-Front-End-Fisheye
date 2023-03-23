@@ -11,17 +11,19 @@
 </head>
 
 <body>
-  <header title="En-tête">
-    <a href="index.html" aria-label="Lien vers la Page d'Accueil" tabindex="100">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"
-        title="Lien vers la page d'accueil de Fisheye" /></a>
-    <h1 tabindex="101">Nos photographes</h1>
+  <header role="banner">
+    <nav aria-label="main">
+      <a href="index.html" aria-label="Lien vers la Page d'Accueil" role="link">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" /></a>
+      <h1 role="menuitem" class="title_homepage">Nos photographes</h1>
+    </nav>
   </header>
   <main id="main" aria-label="Liste de nos Photographes">
     <div class="photographer_section" role="list"></div>
   </main>
   <script src="scripts/factories/photographer.js"></script>
   <script src="scripts/pages/index.js"></script>
+
 </body>
 
 </html>

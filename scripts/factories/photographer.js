@@ -14,10 +14,10 @@ function photographerFactory(data, index) {
       "title",
       `Accéder à la page du photographe : ${data.name}`
     );
-    link.setAttribute("tabindex", 200 + index);
+    //link.setAttribute("tabindex", 200 + index);
     const img = document.createElement("img");
     img.setAttribute("src", picture);
-    img.setAttribute("title", `Portrait du Photographe ${data.name}`);
+    //img.setAttribute("title", `Portrait du Photographe ${data.name}`);
     img.setAttribute("aria-label", `Portrait du Photographe ${data.name}`);
     const h2 = document.createElement("h2");
     h2.textContent = data.name;

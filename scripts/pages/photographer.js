@@ -1,6 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search);
 const idPhotographer = urlParams.get("id");
-console.log(idPhotographer);
 
 async function getDataApi() {
   try {
@@ -12,15 +11,19 @@ async function getDataApi() {
   }
 }
 
-async function displayData(element) {
-  const photographerModel = photographerFactory(element);
+async function displayData(photographerData, media) {
+  const photographerModel = photographerFactory(photographerData);
   photographerModel.getUserCardDOM();
+  const mediaModel = mediaPhotographerFactory(photographerData, media);
+  mediaModel.getPhotoCardDOM();
 }
 
 async function init(idPhotographer) {
   const { photographers, media } = await getDataApi();
   photographers.map(
-    (element) => element.id == idPhotographer && displayData(element)
+    (photographerData) =>
+      photographerData.id == idPhotographer &&
+      displayData(photographerData, media)
   );
 }
 

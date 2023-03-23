@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <link href="css/photographer.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
@@ -11,9 +11,10 @@
 
 <body>
   <header>
-    <a href="index.html" role="link" aria-label="Lien vers la Page d'Accueil">
-      <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"
-        title="Lien vers la page d'accueil de Fisheye" /></a>
+    <nav aria-label="main">
+      <a href="index.html" role="link" aria-label="Lien vers la Page d'Accueil" role="link">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" /></a>
+    </nav>
   </header>
   <main id="main">
     <div class="photograph-header">
@@ -21,6 +22,10 @@
       <button class="contact_button" onclick="displayModal()"
         arial-label="Ouvrir formulaire de contact">Contactez-moi</button>
       <div class="photograph-header-img"> </div>
+    </div>
+    <div class="photograph-content">
+      <div>Trier par :</div>
+      <div class="photograph-content-list"></div>
     </div>
   </main>
   <div id="contact_modal">
@@ -61,8 +66,11 @@
     </div>
   </div>
   <script src="scripts/factories/photographerPage.js"></script>
+  <script src="scripts/factories/mediaPhotographer.js"></script>
   <script src="/scripts/pages/photographer.js"></script>
   <script src="/scripts/utils/contactForm.js"></script>
+  <script src="https://kit.fontawesome.com/7008d6fa0f.js" crossorigin="anonymous" defer></script>
+
 </body>
 
 </html>
