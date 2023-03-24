@@ -4,7 +4,7 @@ function photographerFactory(photographerData) {
   function getUserCardDOM() {
     //part Details
     const divDetail = document.getElementsByClassName(
-      "photograph-header-details"
+      "photograph__header-details"
     )[0];
     const h1 = document.createElement("h1");
     h1.setAttribute("aria-label", `Identité du Photographe`);
@@ -28,7 +28,7 @@ function photographerFactory(photographerData) {
     );
     divDetail.appendChild(tagline);
     //part IMG
-    const divImg = document.getElementsByClassName("photograph-header-img")[0];
+    const divImg = document.getElementsByClassName("photograph__header-img")[0];
     const img = document.createElement("img");
     img.setAttribute("src", picture);
     img.setAttribute(

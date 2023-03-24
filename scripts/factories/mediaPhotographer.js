@@ -1,24 +1,29 @@
-function mediaPhotographerFactory(photographerData, media) {
+function mediaPhotographerFactory(photographerData, media, keySort) {
   const photographerName = photographerData.name
     .split(" ")[0]
     .replace("-", "_");
-  console.log("test", photographerName);
 
-  let pictures = new Array();
+  let mediasPhotographer = new Array();
   let totalLikes = 0;
+  // extract only media of photographer
   media.forEach(
     (element) =>
       element.photographerId === photographerData.id &&
-      (pictures.push(element), (totalLikes += element.likes))
+      (mediasPhotographer.push(element), (totalLikes += element.likes))
   );
-  console.log(pictures);
-  function getPhotoCardDOM() {
+  // sort media photographer
+  mediasPhotographer.sort(function (a, b) {
+    if (a[keySort] < b[keySort]) return -1;
+    if (a[keySort] > b[keySort]) return 1;
+    return 0;
+  });
+
+  function getMediaCardDOM() {
     const divContent = document.getElementsByClassName(
-      "photograph-content-list"
+      "photograph__content-list"
     )[0];
 
-    pictures.forEach((element, index) => {
-      console.log(index, element);
+    mediasPhotographer.forEach((element) => {
       const article = document.createElement("article");
       //img
       if (element.image !== undefined) {
@@ -68,11 +73,15 @@ function mediaPhotographerFactory(photographerData, media) {
     });
     // all likes
     const divLikes = document.createElement("div");
-    divLikes.classList.add("total__likes");
+    divLikes.classList.add("total__likes-paid");
     const nberLikes = document.createElement("p");
     nberLikes.innerHTML = `${totalLikes} <i class="fa-solid fa-heart"></i>`;
     divLikes.appendChild(nberLikes);
+    const paidDay = document.createElement("p");
+    paidDay.innerHTML = `${photographerData.price}€ / jour`;
+    divLikes.appendChild(paidDay);
+
     divContent.appendChild(divLikes);
   }
-  return { getPhotoCardDOM };
+  return { getMediaCardDOM };
 }
