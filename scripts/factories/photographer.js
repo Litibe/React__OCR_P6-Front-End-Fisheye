@@ -1,4 +1,4 @@
-function photographerFactory(data, index) {
+function photographerFactory(data) {
   const srcPortrat = `assets/photographers/${data.portrait}`;
 
   function getUserCardDOM() {

@@ -74,12 +74,32 @@
       </form>
     </div>
   </div>
-  <div id="lightbox_modal"></div>
+  <div id="lightbox_modal">
+    <div class="lightbox_modal-content">
+      <div class="lightbox-header">
+        <button aria-label="Close" onclick="closeLightbox()" class="btn__modal-close">
+          <i class="fa-solid fa-xmark" aria-label="Croix de fermeture"></i></button>
+      </div>
+      <div class="lightbox-content">
+        <button class="lightbox-button"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="lightbox-details">
+          <figure>
+            <img class="lightbox-img" src="assets/images/Mimi/Animals_Rainbow.jpg"
+              aria-label="Photo Rainbow Bird du Photographe Mimi Keel" alt="Photo Rainbow Bird de Mimi Keel">
+            <figcaption>Photo Rainbow Bird du Photographe Mimi Keel</figcaption>
+          </figure>
+        </div>
+        <button class="lightbox-button"><i class="fa-solid fa-chevron-right" role="button"></i></button>
+      </div>
+    </div>
+
+  </div>
   <script src="./scripts/factories/photographerPage.js"></script>
   <script src="./scripts/factories/sortMediasPhotographer.js"></script>
   <script src="./scripts/factories/mediaPhotographer.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
+  <script src="./scripts/utils/lightbox.js"></script>
   <script src="https://kit.fontawesome.com/7008d6fa0f.js" crossorigin="anonymous" defer></script>
 
 </body>

@@ -35,12 +35,9 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
           "aria-label",
           `Photo ${element.title} du Photographe ${photographerData.name}`
         );
-        img.setAttribute(
-          "alt",
-          `Photo ${element.title} de ${photographerData.name}`
-        );
+        img.setAttribute("alt", element.title);
         const imgContainer = document.createElement("div");
-        imgContainer.classList.add("img-container");
+        imgContainer.setAttribute("onclick", "openPhoto(this)");
         imgContainer.appendChild(img);
         article.appendChild(imgContainer);
       } else if (element.video !== undefined) {
@@ -58,6 +55,7 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
           `video ${element.title} de ${photographerData.name}`
         );
         const videoContainer = document.createElement("div");
+        videoContainer.setAttribute("onclick", "openPhoto(this)");
         videoContainer.classList.add("img-container");
         videoContainer.appendChild(video);
         article.appendChild(videoContainer);
@@ -87,7 +85,9 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
     paidDay.innerHTML = `${photographerData.price}€ / jour`;
     divLikes.appendChild(paidDay);
 
-    divContent.appendChild(divLikes);
+    document
+      .getElementsByClassName("photograph__content")[0]
+      .appendChild(divLikes);
   }
   return { getMediaCardDOM };
 }
