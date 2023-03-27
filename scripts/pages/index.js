@@ -1,6 +1,6 @@
 async function getDataApi() {
   try {
-    let response = await fetch("../data/photographers.json");
+    let response = await fetch("./data/photographers.json");
     const data = response.json();
     return data;
   } catch {
