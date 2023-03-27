@@ -75,11 +75,12 @@ a:focus {
   color: var(--secondary-color);
   font-size: 36px;
   text-align: center;
-  margin: 15px 0 0 0;
+  margin: -35px 0 0 0;
   transition: all ease-in-out 400ms;
 }
 
 .photographer_section article img {
+  margin: auto;
   height: 200px;
   width: 200px;
   border-radius: 50%;
@@ -104,4 +105,46 @@ a:focus {
   font-size: 9px;
   line-height: 12px;
   margin: 3px;
+}
+
+/* LOADING IMG */
+.img-container {
+  position: relative;
+  width: 350px;
+  height: 300px;
+}
+.img-container:before {
+  content: " ";
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid red;
+  border-color: transparent red transparent red;
+  border-radius: 50%;
+  animation: loaderImg 1s linear infinite;
+}
+.img-container > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.img-container > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@keyframes loaderImg {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }

@@ -244,38 +244,59 @@ input[data-error]::after {
   color: red;
 }
 /*------------------------------------------------ Photographer COntent   */
+.photograph__content-sortDetails {
+  display: flex;
+  flex-direction: row-reverse;
+}
 .photograph__content-sort {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: start;
 }
-.photograph__content-sortDetails {
+.photograph__content-sort span {
+  margin-top: 15px;
+}
+.dropdown-items {
   margin-left: 10px;
-  padding: 10px;
+  padding: 0;
   border-radius: 5px;
   font-size: 18px;
   width: 150px;
   color: #ffffff;
   background-color: var(--main-color);
-  height: 43px;
+  height: 50px;
   transition: all ease-in-out 500ms;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-.photograph__content-sortDetails:hover,
-.photograph__content-sortDetails:focus {
+.dropdown-items:hover,
+.dropdown-items:focus,
+.dropdown-items::selection {
   height: 150px;
+}
+.item-sort:hover,
+.item-selected:hover {
+  background-color: var(--bg-modal);
 }
 .photograph__content-sortDetails:hover i,
 .photograph__content-sortDetails:focus i {
+  transform-origin: 50% 50%;
   transform: rotate(180deg);
 }
 
 /* style the items (options), including the selected item: */
-.dropdown-items div,
+
+.dropdown-items button,
 .item-selected {
+  color: white;
+  font-size: 18px;
+  background-color: transparent;
   padding: 14px;
   border: 1px solid transparent;
   border-color: transparent transparent rgba(255, 255, 255, 0.639) transparent;
   cursor: pointer;
+  text-align: start;
   top: 100%;
   left: 0;
   right: 0;
@@ -283,22 +304,21 @@ input[data-error]::after {
 }
 
 .fa-angle-up {
-  float: right;
+  position: relative;
+  top: 10px;
+  right: 35px;
+  height: min-content;
   font-size: 25px;
   color: white;
   transition: all ease-in-out 500ms;
+  z-index: 999;
 }
-.photograph__content select {
-  display: none;
-}
-.d-none {
-  display: none;
+.fa-heart {
+  cursor: pointer;
 }
 
-.photograph__content select option {
-  padding: 8px;
-  background-color: var(--main-color);
-  color: white;
+.d-none {
+  display: none;
 }
 
 .photograph__content {

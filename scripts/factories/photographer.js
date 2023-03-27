@@ -1,5 +1,5 @@
 function photographerFactory(data, index) {
-  const picture = `assets/photographers/${data.portrait}`;
+  const srcPortrat = `assets/photographers/${data.portrait}`;
 
   function getUserCardDOM() {
     const article = document.createElement("article");
@@ -15,13 +15,27 @@ function photographerFactory(data, index) {
       `Accéder à la page du photographe : ${data.name}`
     );
     //link.setAttribute("tabindex", 200 + index);
+    //const picture = document.createElement("picture");
+    //const source1 = document.createElement("source");
+    //source1.setAttribute("type", "image/webp");
+    //source1.setAttribute("srcset", srcPortrat.replace(".jpg", ".webp"));
+    //picture.appendChild(source1);
+    //const source2 = document.createElement("source");
+    //source2.setAttribute("type", "image/jpg");
+    //source2.setAttribute("srcset", srcPortrat.replace(".jpg", ".webp"));
+    //picture.appendChild(source2);
     const img = document.createElement("img");
-    img.setAttribute("src", picture);
-    //img.setAttribute("title", `Portrait du Photographe ${data.name}`);
+    img.setAttribute("src", srcPortrat);
     img.setAttribute("aria-label", `Portrait du Photographe ${data.name}`);
+    img.setAttribute("loading", `lazy`);
+    //picture.appendChild(img);
+    const imgContainer = document.createElement("div");
+    imgContainer.classList.add("img-container");
+    imgContainer.appendChild(img);
+    link.appendChild(imgContainer);
+    // title h2
     const h2 = document.createElement("h2");
     h2.textContent = data.name;
-    link.appendChild(img);
     link.appendChild(h2);
     article.appendChild(link);
     //part details
