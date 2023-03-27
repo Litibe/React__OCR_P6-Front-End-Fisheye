@@ -44,6 +44,8 @@ function photographerFactory(photographerData) {
     document
       .getElementsByClassName("formData namePhotographer")[0]
       .appendChild(h2Name);
+    document.getElementById("idPhotographer").value = photographerData.id;
+    document.getElementById("namePhotographer").value = photographerData.name;
   }
   return { getUserCardDOM };
 }

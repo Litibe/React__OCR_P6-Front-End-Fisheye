@@ -70,3 +70,68 @@ function dataError(element) {
   element.classList.add("bg-error");
   element.classList.remove("bg-checked");
 }
+
+// exit modal form
+
+/////// FUNCTIONS CONTROL IF FORM IS VALID TO SEND ///////////
+let btnSubmit = document.getElementsByClassName("btn-submit")[0];
+// Check if all input is validated
+function checkForm(element) {
+  let formDiv = document.querySelector("form").childNodes;
+  // iteration to launch function associed to control every input
+  for (const child of formDiv) {
+    if (child.attributes !== undefined) {
+      if (child.attributes.class.nodeValue === "formData") {
+        // in form, select only div class=formDATA
+        if (
+          child.lastElementChild !== undefined &&
+          child.lastElementChild.name !== undefined
+        ) {
+          if (
+            child.lastElementChild.name === "lastname" ||
+            child.lastElementChild.name === "firstname" ||
+            child.lastElementChild.name === "msg"
+          ) {
+            checkInputText(child.lastElementChild);
+          } else if (child.lastElementChild.name === "email") {
+            checkValueEmail(child.lastElementChild);
+          }
+        }
+      }
+    }
+  }
+  // after every function check, check of controlForm Map contains all necessary data to send form
+  if (controlForm.size < 4) {
+    element.classList.add("btn-submit-disabled");
+    element.parentElement.setAttribute("data-error-visible", "true");
+    element.parentElement.setAttribute(
+      "data-error",
+      "Vous devez remplir tous les éléments : reste " +
+        (4 - controlForm.size) +
+        " à remplir !"
+    );
+    // disactivate button to unautorize submit (update propriety type submit => buttom)
+
+    btnSubmit.setAttribute("type", "button");
+  } else {
+    element.classList.remove("btn-submit-disabled");
+    element.parentElement.removeAttribute("data-error-visible");
+    element.parentElement.removeAttribute("data-error");
+    // activate button to autorize submit (update propriety type buttom => submit)
+    btnSubmit.setAttribute("type", "submit");
+  }
+}
+
+// EventListen if form completed, upgrade btn to submit, send data, and display ::after div modal
+
+document.querySelector("form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  btnSubmit.value = "Fermer";
+  btnSubmit.setAttribute("type", "button");
+  btnSubmit.removeAttribute("onmouseover");
+  btnSubmit.addEventListener("click", closeModal);
+  document.documentElement.style.setProperty("--modal-after-display", "flex");
+  const dataJsonAPI = Object.fromEntries(controlForm);
+  // only to test or remplace by fetch API code
+  console.log(dataJsonAPI);
+});

@@ -5,6 +5,7 @@
   --secondary-color: #d3573c;
   --light-color: #757575;
   --bg-modal: #db8876;
+  --modal-after-display: none;
 }
 .logo {
   height: 50px;
@@ -123,6 +124,26 @@
   margin: auto;
   margin-top: 50px;
 }
+.modal:after {
+  content: "Merci de votre intêret envers l'artiste";
+  display: var(--modal-after-display);
+  justify-content: center;
+  align-items: center;
+  margin: 160px auto 90px auto;
+  height: 74%;
+  max-width: 53%;
+  border-radius: 10px;
+  position: absolute;
+  font-size: 36px;
+  text-align: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: black;
+  background-color: var(--bg-modal);
+  z-index: 1;
+}
 
 .modal-header {
   display: flex;
@@ -232,6 +253,9 @@ form input {
   color: white;
   animation: 150ms ease-in-out 4 animationTranslateError;
 }
+.bg-error::placeholder {
+  color: white;
+}
 .bg-checked {
   background-color: rgb(233, 245, 216);
   color: green;
@@ -244,10 +268,7 @@ input[data-error]::after {
   color: red;
 }
 /*------------------------------------------------ Photographer COntent   */
-.photograph__content-sortDetails {
-  display: flex;
-  flex-direction: row-reverse;
-}
+
 .photograph__content-sort {
   display: flex;
   flex-direction: row;
@@ -272,15 +293,21 @@ input[data-error]::after {
 }
 .dropdown-items:hover,
 .dropdown-items:focus,
-.dropdown-items::selection {
+.dropdown-items:focus-visible,
+.dropdown-items:active {
   height: 150px;
 }
 .item-sort:hover,
-.item-selected:hover {
+.item-selected:hover,
+.item-sort:focus,
+.item-selected:focus {
   background-color: var(--bg-modal);
+  color: black;
+  z-index: 1;
 }
-.photograph__content-sortDetails:hover i,
-.photograph__content-sortDetails:focus i {
+
+.dropdown-items:hover + i,
+.dropdown-items:focus + i {
   transform-origin: 50% 50%;
   transform: rotate(180deg);
 }
@@ -298,20 +325,22 @@ input[data-error]::after {
   cursor: pointer;
   text-align: start;
   top: 100%;
+  top: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 3;
 }
 
 .fa-angle-up {
   position: relative;
-  top: 10px;
-  right: 35px;
+  top: 12px;
+  right: 30px;
+  width: min-content;
   height: min-content;
   font-size: 25px;
   color: white;
   transition: all ease-in-out 500ms;
-  z-index: 999;
+  z-index: 2;
 }
 .fa-heart {
   cursor: pointer;

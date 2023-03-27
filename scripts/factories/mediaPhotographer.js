@@ -66,12 +66,12 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
       // title
       const divTitle = document.createElement("div");
       divTitle.classList.add("article__div-title");
-      const titleImg = document.createElement("p");
+      const titleImg = document.createElement("h2");
       titleImg.classList.add("article__img-title");
       titleImg.innerText = `${element.title}`;
       divTitle.appendChild(titleImg);
       const nberLikes = document.createElement("span");
-      nberLikes.innerHTML = `${element.likes} <i class="fa-solid fa-heart"></i>`;
+      nberLikes.innerHTML = `${element.likes} <i class="fa-solid fa-heart" aria-label="likes"></i>`;
       divTitle.appendChild(nberLikes);
       article.appendChild(divTitle);
 
@@ -81,7 +81,7 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
     const divLikes = document.createElement("div");
     divLikes.classList.add("total__likes-paid");
     const nberLikes = document.createElement("p");
-    nberLikes.innerHTML = `${totalLikes} <i class="fa-solid fa-heart"></i>`;
+    nberLikes.innerHTML = `${totalLikes} <i class="fa-solid fa-heart" aria-label="likes" aria-hidden=true></i>`;
     divLikes.appendChild(nberLikes);
     const paidDay = document.createElement("p");
     paidDay.innerHTML = `${photographerData.price}€ / jour`;

@@ -14,21 +14,10 @@ function photographerFactory(data, index) {
       "title",
       `Accéder à la page du photographe : ${data.name}`
     );
-    //link.setAttribute("tabindex", 200 + index);
-    //const picture = document.createElement("picture");
-    //const source1 = document.createElement("source");
-    //source1.setAttribute("type", "image/webp");
-    //source1.setAttribute("srcset", srcPortrat.replace(".jpg", ".webp"));
-    //picture.appendChild(source1);
-    //const source2 = document.createElement("source");
-    //source2.setAttribute("type", "image/jpg");
-    //source2.setAttribute("srcset", srcPortrat.replace(".jpg", ".webp"));
-    //picture.appendChild(source2);
     const img = document.createElement("img");
     img.setAttribute("src", srcPortrat);
     img.setAttribute("aria-label", `Portrait du Photographe ${data.name}`);
     img.setAttribute("loading", `lazy`);
-    //picture.appendChild(img);
     const imgContainer = document.createElement("div");
     imgContainer.classList.add("img-container");
     imgContainer.appendChild(img);
