@@ -39,6 +39,7 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
         const imgContainer = document.createElement("div");
         imgContainer.setAttribute("onclick", "openPhoto(this)");
         imgContainer.appendChild(img);
+        imgContainer.classList.add("img-container");
         article.appendChild(imgContainer);
       } else if (element.video !== undefined) {
         const pictureSrc = `assets/images/${photographerName}/${element.video}`;
@@ -50,10 +51,7 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
           "aria-label",
           `video ${element.title} du Photographe ${photographerData.name}`
         );
-        video.setAttribute(
-          "alt",
-          `video ${element.title} de ${photographerData.name}`
-        );
+        video.setAttribute("alt", element.title);
         const videoContainer = document.createElement("div");
         videoContainer.setAttribute("onclick", "openPhoto(this)");
         videoContainer.classList.add("img-container");
@@ -72,7 +70,6 @@ function mediaPhotographerFactory(photographerData, media, keySort) {
       nberLikes.innerHTML = `${element.likes} <i class="fa-solid fa-heart" aria-label="likes"></i>`;
       divTitle.appendChild(nberLikes);
       article.appendChild(divTitle);
-
       divContent.appendChild(article);
     });
     // all likes
