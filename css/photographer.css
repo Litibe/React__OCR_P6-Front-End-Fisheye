@@ -425,8 +425,8 @@ input[data-error]::after {
   overflow: auto;
 }
 .lightbox_modal-content {
-  width: 95vw;
-  height: 95vh;
+  width: 100vw;
+  height: 100vh;
   background-color: white;
 }
 .lightbox_modal-content i {
@@ -447,6 +447,9 @@ input[data-error]::after {
   align-items: center;
   height: max-content;
 }
+.lightbox-details {
+  width: min-content;
+}
 
 .lightbox-details figcaption {
   text-align: start;
@@ -459,10 +462,35 @@ input[data-error]::after {
   background: transparent;
 }
 
-.lightbox-details img {
-  width: auto;
+/* LOADING IMG */
+.lightbox-loading-container {
+  position: relative;
+  width: fit-content;
   height: 80vh;
-  margin: auto;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.lightbox-loading-container:before {
+  content: " ";
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid red;
+  border-color: transparent red transparent red;
+  border-radius: 50%;
+  animation: loaderImg 1s linear infinite;
+}
+.lightbox-loading-container > img {
+  height: 80vh;
   object-fit: contain;
   object-position: center;
+  z-index: 2;
+}
+.lightbox-loading-container > video {
+  height: 80vh;
+  object-fit: contain;
+  object-position: center;
+  z-index: 2;
 }
