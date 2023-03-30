@@ -370,7 +370,6 @@ input[data-error]::after {
 .article__div-title span {
   display: flex;
   flex-direction: row;
-  flex-wrap: no;
 }
 .article__div-title span i {
   margin-left: 3px;
