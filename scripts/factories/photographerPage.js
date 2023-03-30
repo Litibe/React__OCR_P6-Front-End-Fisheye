@@ -2,6 +2,7 @@ function photographerFactory(photographerData) {
   const picture = `assets/photographers/${photographerData.portrait}`;
 
   function getUserCardDOM() {
+    document.title = `Fisheye - Photographe ${photographerData.name}`;
     //part Details
     const divDetail = document.getElementsByClassName(
       "photograph__header-details"

@@ -2,7 +2,7 @@ function error404() {
   let main = document.getElementById("main");
   main.remove();
   let main404 = document.createElement("main");
-  document.title = "Erreur 404";
+  document.title = "Fisheye - Erreur 404";
   let title = document.createElement("h1");
   title.innerHTML = "Erreur 404";
   let content = document.createElement("p");
