@@ -326,7 +326,7 @@ input[data-error]::after {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 3;
+  z-index: 1;
 }
 
 .fa-angle-up {
@@ -338,7 +338,7 @@ input[data-error]::after {
   font-size: 25px;
   color: white;
   transition: all ease-in-out 500ms;
-  z-index: 2;
+  z-index: 1;
 }
 .fa-heart {
   cursor: pointer;
@@ -406,6 +406,7 @@ input[data-error]::after {
   flex-direction: row;
   justify-content: space-between;
   width: 178px;
+  z-index: 1;
 }
 
 /*------------------------------------------------ LightBox Modal   */

@@ -1,26 +1,32 @@
 async function getDataApi() {
   try {
-    let response = await fetch("./data/photographers.json");
-    const data = response.json();
-    return data;
+    const response = await fetch('./data/photographers.json');
+    return response.json();
   } catch {
+    // eslint-disable-next-line no-console
+    console.log('erreur 500 connect API');
     return undefined;
   }
 }
 
-async function displayData(photographers) {
-  const photographersSection = document.querySelector(".photographer_section");
-
-  photographers.forEach((photographer, index) => {
-    const photographerModel = photographerFactory(photographer, index);
-    const userCardDOM = photographerModel.getUserCardDOM();
-    photographersSection.appendChild(userCardDOM);
-  });
+function displayData(dataReceived) {
+  const photographersSection = document.querySelector('.photographer_section');
+  if (dataReceived === undefined) {
+    const errorTitle = document.createElement('h2');
+    errorTitle.innerText = 'Aucun Photographe à afficher';
+    photographersSection.appendChild(errorTitle);
+  } else {
+    dataReceived.photographers.forEach((dataPhotographer) => {
+      const photographer = new PhotographerFactory(dataPhotographer);
+      const userCardDOM = photographer.getUserCardDOM;
+      photographersSection.appendChild(userCardDOM);
+    });
+  }
 }
 
 async function init() {
-  const { photographers } = await getDataApi();
-  displayData(photographers);
+  const dataReceived = await getDataApi();
+  displayData(dataReceived);
 }
 
 init();
