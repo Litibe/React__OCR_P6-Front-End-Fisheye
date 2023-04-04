@@ -394,6 +394,11 @@ input[data-error]::after {
 .article__img-title {
   font-size: 24px;
 }
+.article__img-likes {
+  display: flex;
+  flex-direction: row;
+  font-size: 24px;
+}
 
 .total__likes-paid {
   border-radius: 5px;
@@ -404,6 +409,7 @@ input[data-error]::after {
   padding: 0 20px;
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   width: 178px;
   z-index: 1;

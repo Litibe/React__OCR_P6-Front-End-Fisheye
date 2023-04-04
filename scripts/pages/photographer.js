@@ -40,11 +40,6 @@ function updateSelectSort(e) {
   );
 }
 
-async function displayMedia(photographerData, media, sortKey) {
-  const mediaModel = mediaPhotographerFactory(photographerData, media, sortKey);
-  mediaModel.getMediaCardDOM();
-}
-
 async function eraseContent() {
   let mediaList = document.getElementsByClassName(
     'photograph__content-list',
@@ -95,7 +90,7 @@ async function init() {
             await updateSelectSort(e);
             await eraseContent();
             sortMediasPhotographer = await photographerMedia.mediasPhotographerSortedByKey;
-            insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
+            insertMediaToDOM = await photographerMedia.insertMediaCardToDOM;
           });
         },
       );

@@ -20,6 +20,7 @@ class PhotographerFactory {
     const img = document.createElement('img');
     img.setAttribute('src', this.photograph.srcPortrat);
     img.setAttribute('aria-label', `Portrait du Photographe ${this.photograph.name}`);
+    img.setAttribute('alt', `Photographe ${this.photograph.name}`);
     img.setAttribute('loading', 'lazy');
     const imgContainer = document.createElement('div');
     imgContainer.classList.add('img-container');

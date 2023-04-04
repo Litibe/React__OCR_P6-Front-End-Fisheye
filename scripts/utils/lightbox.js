@@ -102,12 +102,14 @@ function openPhoto(divPhoto) {
   updatePhotoIntoLightbox(divPhoto);
   document
     .getElementsByClassName('fa-chevron-right')[0]
-    .addEventListener('click', (e) => {
-      nextPhoto(divPhoto);
-    });
+    .addEventListener(
+      'click',
+      nextPhoto(divPhoto),
+    );
   document
     .getElementsByClassName('fa-chevron-left')[0]
-    .addEventListener('click', (e) => {
-      previousPhoto(divPhoto);
-    });
+    .addEventListener(
+      'click',
+      previousPhoto(divPhoto),
+    );
 }

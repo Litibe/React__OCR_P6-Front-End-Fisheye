@@ -4,6 +4,8 @@ class PhotographerMediaFactory {
     this.idPhotographer = idPhotographer;
     this.mediasPhotographer = mediasPhotographer;
     this.sortKey = undefined;
+    this.totalLikes = 0;
+    this.addLikes = new Map();
   }
 
   get insertMediaCardToDOM() {
@@ -54,32 +56,51 @@ class PhotographerMediaFactory {
       titleImg.classList.add('article__img-title');
       titleImg.innerText = `${element.title}`;
       divTitle.appendChild(titleImg);
+      const divLikes = document.createElement('div');
+      divLikes.classList.add('article__img-likes');
       const nberLikes = document.createElement('span');
-      nberLikes.innerHTML = `${element.likes} <i class="fa-solid fa-heart" aria-label="likes"></i>`;
-      divTitle.appendChild(nberLikes);
+      nberLikes.innerHTML = `${element.likes} `;
+      const iconLike = document.createElement('span');
+      iconLike.innerHTML = '<i class="fa-solid fa-heart addLike" aria-label="likes"></i>';
+
+      iconLike.addEventListener('click', (e) => {
+        const titleLike = e.target.parentElement.parentElement.parentElement.children[0].innerHTML;
+        const nberLike = e.target.parentElement.parentElement.children[0].innerHTML;
+        const totalLikes = document.getElementsByClassName('totalLikes')[0];
+        if (!this.addLikes.has(titleLike)) {
+          this.addLikes.set(titleLike, true);
+          e.target.parentElement.parentElement.children[0].innerHTML = (
+            parseInt(nberLike, 10) + 1);
+          totalLikes.innerHTML = parseInt(totalLikes.innerText, 10) + 1;
+        }
+      });
+      divLikes.appendChild(nberLikes);
+      divLikes.appendChild(iconLike);
+      divTitle.appendChild(divLikes);
       article.appendChild(divTitle);
       divContent.appendChild(article);
     });
-
     return true;
   }
 
-  get totalLikes() {
+  get insertTotalLikesDOM() {
     const initialValue = 0;
     const total = this.mediasPhotographer.reduce(
       (accumulator, element) => accumulator + element.likes,
       initialValue,
-    );
-    return total;
-  }
-
-  get insertTotalLikesDOM() {
+    ); this.totalLikes = total;
     // all likes
     const divLikes = document.createElement('div');
     divLikes.classList.add('total__likes-paid');
-    const nberLikes = document.createElement('p');
-    nberLikes.innerHTML = `${this.totalLikes} <i class="fa-solid fa-heart" aria-label="likes" aria-hidden=true></i>`;
-    divLikes.appendChild(nberLikes);
+    const divNberLikes = document.createElement('div');
+    const nberLikes = document.createElement('span');
+    nberLikes.innerHTML = `${this.totalLikes}`;
+    nberLikes.classList.add('totalLikes');
+    const iconLike = document.createElement('span');
+    iconLike.innerHTML = '<i class="fa-solid fa-heart " aria-label="likes"></i>';
+    divNberLikes.appendChild(nberLikes);
+    divNberLikes.appendChild(iconLike);
+    divLikes.appendChild(divNberLikes);
     const paidDay = document.createElement('p');
     paidDay.innerHTML = `${this.photograph.price}€ / jour`;
     divLikes.appendChild(paidDay);
