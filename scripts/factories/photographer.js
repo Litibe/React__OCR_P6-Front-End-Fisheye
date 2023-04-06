@@ -101,14 +101,6 @@ class PhotographerFactory {
         document.getElementById('idPhotographer').value = this.photograph.id;
         document.getElementById('namePhotographer').value = this.photograph.name;
 
-        const itemSelected = document.querySelector('.item-selected');
-        const openDropDown = document.querySelector('.dropdown-items');
-        itemSelected.addEventListener('focus', () => {
-            openDropDown.style.overflow = 'visible';
-        });
-        itemSelected.addEventListener('blur', () => {
-            openDropDown.style.overflow = 'hidden';
-        });
         return true;
     }
 }

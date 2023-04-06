@@ -298,17 +298,6 @@ input[data-error]::after {
     overflow: hidden;
     z-index: 1;
 }
-.dropdown-items:hover,
-.dropdown-items:focus {
-    overflow: visible;
-}
-.item-selected:hover,
-.item-selected:focus {
-    background-color: var(--bg-modal);
-    color: black;
-    border-radius: 5px 5px 0 0;
-}
-
 .item-sort:hover,
 .item-sort:focus {
     background-color: var(--bg-modal);
@@ -332,6 +321,16 @@ input[data-error]::after {
     cursor: pointer;
     text-align: start;
     width: 150px;
+}
+.dropdown-items button[tabindex="2"] {
+    border-radius: 5px 5px 0 0;
+}
+
+.dropdown-items button[tabindex="3"] {
+    border-radius: 0;
+}
+.dropdown-items button[tabindex="4"] {
+    border-radius: 0 0 5px 5px;
 }
 
 .fa-angle-down {

@@ -24,18 +24,20 @@ function errorPage() {
 
 function updateSelectSort(e) {
     const arrayDivBtnSort = Object.values(document.querySelector('.dropdown-items').children);
+    // set btn clicked on first in list
+
+    let tabIndexNber = 3;
     arrayDivBtnSort.forEach(
         (element) => {
-            element.classList.remove('d-none');
-            // edit element display custom select (first element)
-            document.getElementsByClassName('item-selected')[0].innerText = e.target.innerText;
-            // edit keyword to edit sort list media
-            const arrayBtnSort = Object.values(document.getElementsByClassName('item-sort'));
-            arrayBtnSort.forEach((divButton) => {
-                if (divButton.innerHTML === e.target.innerHTML) {
-                    divButton.classList.add('d-none');
-                }
-            });
+            if (element.innerText === e.target.innerText) {
+                element.style.order = '2';
+                element.setAttribute('tabindex', '1');
+            } else {
+                element.style.order = 'initial';
+                element.setAttribute('tabindex', tabIndexNber.toString());
+                element.style.order = tabIndexNber.toString();
+                tabIndexNber += 1;
+            }
         },
     );
 }
@@ -51,6 +53,12 @@ async function eraseContent() {
     mediaList = document.createElement('div');
     mediaList.classList.add('photograph__content-list');
     photographContent.appendChild(mediaList);
+}
+const openDropDown = document.querySelector('.dropdown-items');
+const firstMedia = document.querySelector('.photograph__content-list').firstChild;
+function closeDropDown() {
+    openDropDown.style.overflow = 'hidden';
+    // firstMedia.focus();
 }
 
 async function init() {
@@ -81,29 +89,28 @@ async function init() {
             const insertTotalLikesToDOM = photographerMedia.insertTotalLikesDOM;
             // addEventListener on click into custom select to update sort Media
             const arrayDivBtnSort = Object.values(document.getElementsByClassName('item-sort'));
-            const openDropDown = document.querySelector('.dropdown-items');
+
             arrayDivBtnSort.forEach(
                 (element) => {
-                    if (element.innerHTML === document.querySelector('.item-selected').innerHTML) {
-                        element.classList.add('d-none');
-                    }
                     element.addEventListener('click', async (e) => {
                         openDropDown.style.overflow = 'visible';
                         await updateSelectSort(e);
                         await eraseContent();
                         sortMedias = await photographerMedia.mediasPhotographerSortedByKey;
                         insertMediaToDOM = await photographerMedia.insertMediaCardToDOM;
-                        //   openDropDown.style.overflow = 'hidden';
+                        setTimeout(closeDropDown, 200);
                     });
-
+                    element.addEventListener('mouseover', () => {
+                        openDropDown.style.overflow = 'visible';
+                    });
                     element.addEventListener('focus', () => {
                         openDropDown.style.overflow = 'visible';
                     });
+                    element.addEventListener('mouseout', () => {
+                        closeDropDown();
+                    });
                     element.addEventListener('blur', () => {
-                        function closeDropDown() {
-                            openDropDown.style.overflow = 'hidden';
-                        }
-                        setTimeout(closeDropDown, 1000);
+                        closeDropDown();
                     });
                 },
             );

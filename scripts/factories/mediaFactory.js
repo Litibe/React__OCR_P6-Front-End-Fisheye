@@ -112,10 +112,12 @@ class PhotographerMediaFactory {
     }
 
     get mediasPhotographerSortedByKey() {
-        if (document.getElementsByClassName('item-selected')[0].innerText === '') {
-            document.getElementsByClassName('item-selected')[0].innerText = document.getElementsByClassName('item-sort')[0].innerHTML;
+        let word = document.querySelector('.dropdown-items button[tabindex="1"]');
+        if (word === null) {
+            word = document.querySelector('.dropdown-items button').innerText;
+        } else {
+            word = word.innerText;
         }
-        const word = document.getElementsByClassName('item-selected')[0].innerText;
         if (word === 'Popularité') {
             this.sortKey = 'likes';
         } if (word === 'Date') {
