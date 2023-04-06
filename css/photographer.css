@@ -481,6 +481,9 @@ input[data-error]::after {
     display: flex;
     flex-direction: column-reverse;
 }
+.lightbox-loading-container button {
+    z-index: 3;
+}
 .lightbox-loading-container:before {
     content: " ";
     width: 100px;
@@ -494,14 +497,16 @@ input[data-error]::after {
     animation: loaderImg 1s linear infinite;
 }
 .lightbox-loading-container > img {
-    height: 80vh;
+    max-width: 70vw;
+    max-height: 80vh;
     object-fit: contain;
     object-position: center;
     z-index: 2;
 }
 .lightbox-loading-container > video {
-    height: 80vh;
-    object-fit: contain;
+    max-width: 70vw;
+    max-height: 80vh;
+    object-fit: cover;
     object-position: center;
     z-index: 2;
 }

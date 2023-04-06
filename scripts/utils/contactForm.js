@@ -74,7 +74,7 @@ function checkValueEmail(element) {
 /// //// FUNCTIONS CONTROL IF FORM IS VALID TO SEND ///////////
 const btnSubmit = document.querySelector('.btn-submit');
 
-function checkForm(element) {
+function checkForm() {
     checkInputText(document.getElementById('firstname'));
     checkInputText(document.getElementById('lastname'));
     checkValueEmail(document.getElementById('email'));
@@ -111,10 +111,7 @@ btnSubmit.addEventListener('mouseover', (e) => {
 
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
-    btnSubmit.value = 'Fermer';
-    btnSubmit.removeAttribute('type');
-    btnSubmit.removeAttribute('onmouseover');
-    btnSubmit.addEventListener('click', closeModal);
+    btnSubmit.classList.add('d-none');
     document.documentElement.style.setProperty('--modal-after-display', 'flex');
     const dataJsonAPI = Object.fromEntries(controlForm);
     // only to test or remplace by fetch API code
