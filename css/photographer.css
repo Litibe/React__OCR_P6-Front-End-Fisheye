@@ -131,6 +131,7 @@ header {
     padding: 35px;
     margin: auto;
     margin-top: 50px;
+    height: 900px;
 }
 .modal:after {
     content: "Merci de votre intêret envers l'artiste";
@@ -138,7 +139,7 @@ header {
     justify-content: center;
     align-items: center;
     margin: 160px auto 90px auto;
-    height: 74%;
+    height: 720px;
     max-width: 53%;
     border-radius: 10px;
     position: absolute;

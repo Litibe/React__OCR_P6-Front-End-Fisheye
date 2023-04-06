@@ -72,7 +72,7 @@ function checkValueEmail(element) {
 // exit modal form
 
 /// //// FUNCTIONS CONTROL IF FORM IS VALID TO SEND ///////////
-const btnSubmit = document.getElementsByClassName('btn-submit')[0];
+const btnSubmit = document.querySelector('.btn-submit');
 
 function checkForm(element) {
     checkInputText(document.getElementById('firstname'));
@@ -81,9 +81,9 @@ function checkForm(element) {
     checkInputText(document.getElementById('msg'));
     // after every function check, check of controlForm Map contains all necessary data to send form
     if (controlForm.size < 4) {
-        element.classList.add('btn-submit-disabled');
-        element.parentElement.setAttribute('data-error-visible', 'true');
-        element.parentElement.setAttribute(
+        btnSubmit.classList.add('btn-submit-disabled');
+        btnSubmit.parentElement.setAttribute('data-error-visible', 'true');
+        btnSubmit.parentElement.setAttribute(
             'data-error',
             `Vous devez remplir tous les éléments : reste ${
                 4 - controlForm.size
@@ -93,9 +93,9 @@ function checkForm(element) {
 
         btnSubmit.setAttribute('type', 'button');
     } else {
-        element.classList.remove('btn-submit-disabled');
-        element.parentElement.removeAttribute('data-error-visible');
-        element.parentElement.removeAttribute('data-error');
+        btnSubmit.classList.remove('btn-submit-disabled');
+        btnSubmit.parentElement.removeAttribute('data-error-visible');
+        btnSubmit.parentElement.removeAttribute('data-error');
         // activate button to autorize submit (update propriety type buttom => submit)
         btnSubmit.setAttribute('type', 'submit');
     }
@@ -112,7 +112,7 @@ btnSubmit.addEventListener('mouseover', (e) => {
 document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     btnSubmit.value = 'Fermer';
-    btnSubmit.setAttribute('type', 'button');
+    btnSubmit.removeAttribute('type');
     btnSubmit.removeAttribute('onmouseover');
     btnSubmit.addEventListener('click', closeModal);
     document.documentElement.style.setProperty('--modal-after-display', 'flex');

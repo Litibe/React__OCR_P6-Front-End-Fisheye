@@ -25,18 +25,19 @@ function errorPage() {
 function updateSelectSort(e) {
     const arrayDivBtnSort = Object.values(document.querySelector('.dropdown-items').children);
     // set btn clicked on first in list
-
     let tabIndexNber = 3;
+    let orderNber = 1;
     arrayDivBtnSort.forEach(
         (element) => {
             if (element.innerText === e.target.innerText) {
-                element.style.order = '2';
-                element.setAttribute('tabindex', '1');
+                element.style.order = '1';
+                element.setAttribute('tabindex', '2');
             } else {
-                element.style.order = 'initial';
+                element.style.order = orderNber.toString();
                 element.setAttribute('tabindex', tabIndexNber.toString());
                 element.style.order = tabIndexNber.toString();
                 tabIndexNber += 1;
+                orderNber += 1;
             }
         },
     );
@@ -55,10 +56,8 @@ async function eraseContent() {
     photographContent.appendChild(mediaList);
 }
 const openDropDown = document.querySelector('.dropdown-items');
-const firstMedia = document.querySelector('.photograph__content-list').firstChild;
 function closeDropDown() {
     openDropDown.style.overflow = 'hidden';
-    // firstMedia.focus();
 }
 
 async function init() {
