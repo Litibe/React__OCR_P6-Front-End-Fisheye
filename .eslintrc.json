@@ -14,5 +14,9 @@
     "rules": {  
         "no-underscore-dangle": "off",
         "no-unused-vars": "off",
-        "no-undef": "off"} 
+        "no-undef": "off",
+        "indent": ["error", 4]
+    }
+    
+         
 }

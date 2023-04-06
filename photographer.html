@@ -12,26 +12,26 @@
 <body>
   <header>
     <nav aria-label="main" role="navigation">
-      <a href="./index.html" aria-label="Lien vers la Page d'Accueil">
+      <a href="./index.html" tabindex="1" aria-label="Lien vers la Page d'Accueil">
         <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home Page"></a>
     </nav>
   </header>
   <main id="main">
     <div class="photograph__header">
       <div class="photograph__header-details"> </div>
-      <button class="contact_button" onclick="displayModal()"
+      <button class="contact_button" tabindex="1" onclick="displayModal()"
         aria-label="Ouvrir formulaire de contact">Contactez-moi</button>
       <div class="photograph__header-img"> </div>
     </div>
     <div class="photograph__content">
       <div class="photograph__content-sort"><span>Trier par :</span>
         <div class="dropdown-items" aria-labelledby="Order Option List" aria-haspopup="listbox">
-          <button role="button" aria-label="Actual Order" class="item-selected"></button>
-          <button role="button" aria-label="Order by Popularity" class="item-sort">Popularité</button>
-          <button role="button" aria-label="Order by Date" class="item-sort">Date</button>
-          <button role="button" aria-label="Order by Title" class="item-sort">Titre</button>
+          <button role="button" tabindex="1" aria-label="Actual Order" class="item-selected"></button>
+          <button role="button" tabindex="1" aria-label="Order by Popularity" class="item-sort">Popularité</button>
+          <button role="button" tabindex="1" aria-label="Order by Date" class="item-sort">Date</button>
+          <button role="button" tabindex="1" aria-label="Order by Title" class="item-sort">Titre</button>
         </div>
-        <i class="fa-solid fa-angle-up" aria-hidden=true></i>
+        <i class="fa-solid fa-angle-down" aria-hidden=true></i>
       </div>
       <div class="photograph__content-list"></div>
     </div>
@@ -94,7 +94,7 @@
 
   </div>
   <script src="./scripts/factories/photographer.js"></script>
-  <script src="./scripts/factories/photographerMediaFactory.js"></script>
+  <script src="./scripts/factories/mediaFactory.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/models/photographer.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>
