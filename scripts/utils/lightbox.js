@@ -40,19 +40,20 @@ const updatePhotoIntoLightbox = (media) => {
 };
 
 async function nextPhoto() {
-    const container = document.getElementsByClassName(
-        'lightbox-loading-container',
-    )[0];
+    const container = document.querySelector(
+        '.lightbox-loading-container',
+    );
     const mediaBox = container.children[1];
     const listChild = document.getElementsByClassName('photograph__content-list')[0]
         .children;
     const arrayChrildren = Object.values(listChild);
-    arrayChrildren.forEach(async (children) => {
+    // search if name_file into DOM to search next media
+    arrayChrildren.forEach((children) => {
         if (
-            children.innerHTML.includes(mediaBox.getAttribute('src')) === true
+            children.innerHTML.includes(mediaBox.getAttribute('src').split('/')[3]) === true
         && children.nextElementSibling !== null
         ) {
-            // updatePhotoIntoLightbox(children.nextElementSibling.firstChild);
+            updatePhotoIntoLightbox(children.nextElementSibling.firstChild);
         }
     });
 }
@@ -65,12 +66,13 @@ async function previousPhoto() {
     const listChild = document.getElementsByClassName('photograph__content-list')[0]
         .children;
     const arrayChrildren = Object.values(listChild);
+    // search if name_file into DOM to search previous media
     arrayChrildren.forEach(async (children) => {
         if (
-            children.innerHTML.includes(mediaBox.getAttribute('src')) === true
+            children.innerHTML.includes(mediaBox.getAttribute('src').split('/')[3]) === true
       && children.previousElementSibling !== null
         ) {
-            // updatePhotoIntoLightbox(children.previousElementSibling.firstChild);
+            updatePhotoIntoLightbox(children.previousElementSibling.firstChild);
         }
     });
 }
@@ -102,17 +104,17 @@ const openPhoto = (divPhoto) => {
     displayLightbox();
     updatePhotoIntoLightbox(divPhoto);
     console.log(document
-        .getElementsByClassName('fa-chevron-right')[0]);
+        .querySelector('.fa-chevron-right'));
     document
-        .getElementsByClassName('fa-chevron-right')[0]
+        .querySelector('.fa-chevron-right')
         .addEventListener(
             'click',
-            nextPhoto(),
+            () => nextPhoto(),
         );
     document
-        .getElementsByClassName('fa-chevron-left')[0]
+        .querySelector('.fa-chevron-left')
         .addEventListener(
             'click',
-            previousPhoto(),
+            () => previousPhoto(),
         );
 };

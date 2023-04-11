@@ -62,6 +62,7 @@ class PhotographerFactory {
         const h1 = document.createElement('h1');
         h1.setAttribute('aria-label', 'Identité du Photographe');
         h1.innerText = this.photograph.name;
+        h1.setAttribute('tabindex', '1');
         divDetail.appendChild(h1);
         const city = document.createElement('p');
         city.innerText = `${this.photograph.city}, ${this.photograph.country}`;
@@ -71,6 +72,7 @@ class PhotographerFactory {
         );
         city.classList.add('photographer-details-city');
         city.style.fontSize = '24px';
+        city.setAttribute('tabindex', '1');
         divDetail.appendChild(city);
         const tagline = document.createElement('p');
         tagline.innerText = this.photograph.tagline;
@@ -79,6 +81,7 @@ class PhotographerFactory {
             'aria-label',
             `Slogan du Photographe ${this.photograph.name}`,
         );
+        tagline.setAttribute('tabindex', '1');
         divDetail.appendChild(tagline);
         // part IMG
         const divImg = document.getElementsByClassName('photograph__header-img')[0];
@@ -88,6 +91,7 @@ class PhotographerFactory {
             'title',
             `Photo Portrait du Photographe ${this.photograph.name}`,
         );
+        img.setAttribute('tabindex', '1');
         img.setAttribute('loading', 'lazy');
         img.setAttribute('alt', `Photo de ${this.photograph.name}`);
         divImg.appendChild(img);
@@ -95,6 +99,7 @@ class PhotographerFactory {
         const h2Name = document.createElement('h2');
         h2Name.setAttribute('aria-label', 'Identité du Photographe');
         h2Name.innerText = this.photograph.name;
+        h2Name.setAttribute('tabindex', '1');
         document
             .getElementsByClassName('formData namePhotographer')[0]
             .appendChild(h2Name);

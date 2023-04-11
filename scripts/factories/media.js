@@ -27,6 +27,7 @@ class MediaFactory {
                 img.setAttribute('alt', element.title);
                 const imgContainer = document.createElement('div');
                 imgContainer.setAttribute('onclick', 'openPhoto(this)');
+                imgContainer.setAttribute('tabindex', '5');
                 imgContainer.appendChild(img);
                 imgContainer.classList.add('img-container');
                 article.appendChild(imgContainer);
@@ -45,6 +46,7 @@ class MediaFactory {
                 videoContainer.setAttribute('onclick', 'openPhoto(this)');
                 videoContainer.classList.add('img-container');
                 videoContainer.appendChild(video);
+                videoContainer.setAttribute('tabindex', '5');
                 article.appendChild(videoContainer);
             }
 
@@ -54,16 +56,20 @@ class MediaFactory {
             const titleImg = document.createElement('h2');
             titleImg.classList.add('article__img-title');
             titleImg.innerText = element.title;
+            titleImg.setAttribute('tabindex', '5');
             divTitle.appendChild(titleImg);
             const divLikes = document.createElement('div');
             divLikes.classList.add('article__img-likes');
             const nberLikes = document.createElement('span');
             nberLikes.innerText = element.likes;
+            nberLikes.setAttribute('tabindex', '5');
+            nberLikes.setAttribute('aria-label', 'Nomnbre de Likes sur le Media');
             const iconLike = document.createElement('span');
-            iconLike.innerHTML = '<i class="fa-solid fa-heart addLike" aria-label="likes"></i>';
+            iconLike.innerHTML = '<i class="fa-solid fa-heart addLike"></i>';
+            iconLike.setAttribute('tabindex', '5');
+            iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer pour Aimer le Media et ajouter un like');
 
-            iconLike.addEventListener('click', (e) => {
-                const divImgLikes = e.target.parentElement.parentElement;
+            const integrationNewLike = (divImgLikes) => {
                 const titleLike = divImgLikes.parentElement.children[0].innerText;
                 const nberLike = divImgLikes.children[0].innerText;
                 const totalLikes = document.getElementsByClassName('totalLikes')[0];
@@ -72,6 +78,17 @@ class MediaFactory {
                     divImgLikes.children[0].innerText = (
                         parseInt(nberLike, 10) + 1);
                     totalLikes.innerText = parseInt(totalLikes.innerText, 10) + 1; // innertext
+                }
+            };
+
+            iconLike.addEventListener('click', (e) => {
+                const divImgLikes = e.target.parentElement.parentElement;
+                integrationNewLike(divImgLikes);
+            });
+            iconLike.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    const divImgLikes = e.target.parentElement;
+                    integrationNewLike(divImgLikes);
                 }
             });
             divLikes.appendChild(nberLikes);

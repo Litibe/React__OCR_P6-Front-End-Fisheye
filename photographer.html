@@ -11,7 +11,7 @@
 
 <body>
   <header>
-    <nav aria-label="main" role="navigation">
+    <nav aria-label="main">
       <a href="./index.html" tabindex="1" aria-label="Lien vers la Page d'Accueil">
         <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home Page"></a>
     </nav>
@@ -25,10 +25,10 @@
     </div>
     <div class="photograph__content">
       <div class="photograph__content-sort"><span>Trier par :</span>
-        <div class="dropdown-items" aria-labelledby="Order Option List" aria-haspopup="listbox">
-          <button role="button" tabindex="2" aria-label="Order by Popularity" class="item-sort">Popularité</button>
-          <button role="button" tabindex="3" aria-label="Order by Date" class="item-sort">Date</button>
-          <button role="button" tabindex="4" aria-label="Order by Title" class="item-sort">Titre</button>
+        <div class="dropdown-items" aria-labelledby="Liste Option de Tri" aria-haspopup="listbox">
+          <button type="button" tabindex="2" aria-label="Trier par Popularity" class="item-sort">Popularité</button>
+          <button type="button" tabindex="3" aria-label="Trier par Date" class="item-sort">Date</button>
+          <button type="button" tabindex="4" aria-label="Trier par Title" class="item-sort">Titre</button>
         </div>
         <i class="fa-solid fa-angle-down" aria-hidden=true></i>
       </div>
@@ -38,8 +38,8 @@
   <div id="contact_modal">
     <div class="modal">
       <div class="modal-header">
-        <h2>Contactez-moi</h2>
-        <button aria-label="Close" onclick="closeModal()" type="button" class="btn__modal-close"><img
+        <h2 tabindex="1">Contactez-moi</h2>
+        <button tabindex="2" aria-label="Close" onclick="closeModal()" type="button" class="btn__modal-close"><img
             src="assets/icons/close.svg" alt="Close X" aria-label="Croix de fermeture"></button>
       </div>
       <form>
@@ -48,27 +48,27 @@
             name="namePhotographer" required>
         </div>
         <div class="formData">
-          <label for="firstname">Prénom</label>
-          <input class="text-control" type="text" id="firstname" name="firstname" autocomplete="given-name" autofocus
-            onchange="checkInputText(this)" required placeholder="ex: John">
+          <label tabindex="1" for="firstname" tabindex="2">Prénom</label>
+          <input tabindex="1" class="text-control" type="text" id="firstname" name="firstname" autocomplete="given-name"
+            autofocus onchange="checkInputText(this)" required placeholder="ex: John">
         </div>
         <div class="formData">
-          <label for="lastname">Nom</label>
-          <input class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
+          <label tabindex="1" for="lastname">Nom</label>
+          <input tabindex="1" class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
             onchange="checkInputText(this)" required placeholder="ex: Doe">
         </div>
         <div class="formData">
-          <label for="email">E-mail</label>
-          <input class="text-control" type="email" id="email" name="email" autocomplete="email"
+          <label tabindex="1" for="email">E-mail</label>
+          <input tabindex="1" class="text-control" type="email" id="email" name="email" autocomplete="email"
             onchange="checkValueEmail(this)" required placeholder="ex: adresse@domaine.fr">
         </div>
         <div class="formData">
-          <label for="msg">Votre message</label>
-          <textarea class="text-area" id="msg" name="msg" required rows="5"
+          <label tabindex="1" for="msg">Votre message</label>
+          <textarea tabindex="1" class="text-area" id="msg" name="msg" required rows="5"
             placeholder="ex: Je souhaite un renseignement sur ..."></textarea>
         </div>
         <div class="formData">
-          <input class="btn-submit send_button" type="button" value="Envoyer">
+          <input tabindex="1" class="btn-submit send_button" type="button" value="Envoyer">
         </div>
       </form>
     </div>
@@ -76,19 +76,21 @@
   <div id="lightbox_modal">
     <div class="lightbox_modal-content">
       <div class="lightbox-header">
-        <button aria-label="Fermer" onclick="closeLightbox()" class="btn__modal-close">
-          <i class="fa-solid fa-xmark" aria-describedby="Croix de fermeture"></i></button>
+        <button onclick="closeLightbox()" aria-label="Croix de fermeture" class="btn__modal-close">
+          <i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="lightbox-content">
-        <button class="lightbox-button"><i class="fa-solid fa-chevron-left"
-            aria-describedby="Photo Précédente"></i></button>
+        <button class="lightbox-button" onclick="nextPhoto()"
+          aria-label="Button Flèche vers la gauche pour accéder Photo Précédente"><i
+            class="fa-solid fa-chevron-left"></i></button>
         <div class="lightbox-details">
           <figure class="lightbox-loading-container">
             <figcaption></figcaption>
           </figure>
         </div>
-        <button class="lightbox-button"><i class="fa-solid fa-chevron-right" aria-describedby="Photo Suivante"
-            role="button"></i></button>
+        <button class="lightbox-button" onclick="nextPhoto()"
+          aria-label="Button Flèche vers la droite pour accéder à la Photo Suivante"><i
+            class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
 

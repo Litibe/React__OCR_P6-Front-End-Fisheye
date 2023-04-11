@@ -73,7 +73,6 @@ async function init() {
     media.map(
         (data) => data.photographerId === parseInt(idUrl, 10) && mediasPhotographer.push(data),
     );
-    console.log(mediasPhotographer);
     if (dataPhotographer.length === 0) {
         errorPage();
     } else {
