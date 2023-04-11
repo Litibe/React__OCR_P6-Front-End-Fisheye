@@ -44,12 +44,12 @@ const updateSelectSort = (e) => {
 };
 
 const eraseContent = () => {
-    let mediaList = document.getElementsByClassName(
-        'photograph__content-list',
-    )[0];
-    const photographContent = document.getElementsByClassName(
-        'photograph__content',
-    )[0];
+    let mediaList = document.querySelector(
+        '.photograph__content-list',
+    );
+    const photographContent = document.querySelector(
+        '.photograph__content',
+    );
     photographContent.removeChild(mediaList);
     mediaList = document.createElement('div');
     mediaList.classList.add('photograph__content-list');
@@ -88,15 +88,15 @@ async function init() {
             let insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
             const insertTotalLikesToDOM = photographerMedia.insertTotalLikesDOM;
             // addEventListener on click into custom select to update sort Media
-            const arrayDivBtnSort = Object.values(document.getElementsByClassName('item-sort'));
+            const arrayDivBtnSort = Object.values(document.querySelectorAll('.item-sort'));
 
             arrayDivBtnSort.forEach(
                 (element) => {
-                    element.addEventListener('click', async (e) => {
+                    element.addEventListener('click', (e) => {
                         openDropDown.style.overflow = 'visible';
                         updateSelectSort(e);
                         eraseContent();
-                        sortMedias = await photographerMedia.mediasPhotographerSortedByKey;
+                        sortMedias = photographerMedia.mediasPhotographerSortedByKey;
                         insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
                         setTimeout(closeDropDown, 200);
                     });

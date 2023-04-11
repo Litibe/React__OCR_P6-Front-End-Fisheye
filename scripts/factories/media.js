@@ -9,9 +9,9 @@ class MediaFactory {
     }
 
     get insertMediaCardToDOM() {
-        const divContent = document.getElementsByClassName(
-            'photograph__content-list',
-        )[0];
+        const divContent = document.querySelector(
+            '.photograph__content-list',
+        );
         this.mediasPhotographer.forEach((element) => {
             const article = document.createElement('article');
             // img
@@ -27,6 +27,11 @@ class MediaFactory {
                 img.setAttribute('alt', element.title);
                 const imgContainer = document.createElement('div');
                 imgContainer.setAttribute('onclick', 'openPhoto(this)');
+                imgContainer.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        openPhoto(e.target);
+                    }
+                });
                 imgContainer.setAttribute('tabindex', '5');
                 imgContainer.appendChild(img);
                 imgContainer.classList.add('img-container');
@@ -44,6 +49,11 @@ class MediaFactory {
                 video.setAttribute('alt', element.title);
                 const videoContainer = document.createElement('div');
                 videoContainer.setAttribute('onclick', 'openPhoto(this)');
+                videoContainer.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        openPhoto(e.target);
+                    }
+                });
                 videoContainer.classList.add('img-container');
                 videoContainer.appendChild(video);
                 videoContainer.setAttribute('tabindex', '5');
@@ -72,7 +82,7 @@ class MediaFactory {
             const integrationNewLike = (divImgLikes) => {
                 const titleLike = divImgLikes.parentElement.children[0].innerText;
                 const nberLike = divImgLikes.children[0].innerText;
-                const totalLikes = document.getElementsByClassName('totalLikes')[0];
+                const totalLikes = document.querySelector('.totalLikes');
                 if (!this.addLikes.has(titleLike)) {
                     this.addLikes.set(titleLike, true);
                     divImgLikes.children[0].innerText = (
@@ -113,16 +123,20 @@ class MediaFactory {
         const nberLikes = document.createElement('span');
         nberLikes.innerText = this.totalLikes;
         nberLikes.classList.add('totalLikes');
+        nberLikes.setAttribute('aria-label', "Nombre total de likes pour l'artiste");
         const iconLike = document.createElement('span');
-        iconLike.innerHTML = '<i class="fa-solid fa-heart " aria-label="likes"></i>';
+        iconLike.innerHTML = '<i class="fa-solid fa-heart " aria-label="Icône likes"></i>';
         divNberLikes.appendChild(nberLikes);
         divNberLikes.appendChild(iconLike);
+        divNberLikes.setAttribute('tabindex', '100');
         divLikes.appendChild(divNberLikes);
         const paidDay = document.createElement('p');
-        paidDay.innerHTML = `${this.photograph.price}€ / jour`;
+        paidDay.innerText = `${this.photograph.price}€ / jour`;
+        paidDay.setAttribute('aria-label', 'Prix facturé par jour pour cet(te) artiste');
+        paidDay.setAttribute('tabindex', '100');
         divLikes.appendChild(paidDay);
         document
-            .getElementsByClassName('photograph__content')[0]
+            .querySelector('.photograph__content')
             .appendChild(divLikes);
         return true;
     }

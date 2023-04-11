@@ -56,9 +56,9 @@ class PhotographerFactory {
     get getUserHeaderDOM() {
         document.title = `Fisheye - Photographe ${this.photograph.name}`;
         // part Details
-        const divDetail = document.getElementsByClassName(
-            'photograph__header-details',
-        )[0];
+        const divDetail = document.querySelector(
+            '.photograph__header-details',
+        );
         const h1 = document.createElement('h1');
         h1.setAttribute('aria-label', 'Identité du Photographe');
         h1.innerText = this.photograph.name;
@@ -84,7 +84,7 @@ class PhotographerFactory {
         tagline.setAttribute('tabindex', '1');
         divDetail.appendChild(tagline);
         // part IMG
-        const divImg = document.getElementsByClassName('photograph__header-img')[0];
+        const divImg = document.querySelector('.photograph__header-img');
         const img = document.createElement('img');
         img.setAttribute('src', this.photograph.srcPortrat);
         img.setAttribute(
