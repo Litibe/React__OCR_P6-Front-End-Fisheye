@@ -1,4 +1,4 @@
-class PhotographerMediaFactory {
+class MediaFactory {
     constructor(photographer, idPhotographer, mediasPhotographer) {
         this.photograph = photographer.photograph;
         this.idPhotographer = idPhotographer;
@@ -12,12 +12,11 @@ class PhotographerMediaFactory {
         const divContent = document.getElementsByClassName(
             'photograph__content-list',
         )[0];
-
         this.mediasPhotographer.forEach((element) => {
             const article = document.createElement('article');
             // img
             if (element.image !== undefined) {
-                const pictureSrc = `assets/images/${this.photograph.folderMediaName}/${element.image}`;
+                const pictureSrc = `assets/images/${this.photograph.folderMediaName}/thumbnail/${element.image}`;
                 const img = document.createElement('img');
                 img.classList.add('article__img');
                 img.setAttribute('src', pictureSrc);
@@ -32,10 +31,10 @@ class PhotographerMediaFactory {
                 imgContainer.classList.add('img-container');
                 article.appendChild(imgContainer);
             } else if (element.video !== undefined) {
-                const pictureSrc = `assets/images/${this.photograph.folderMediaName}/${element.video}`;
+                const videoSrc = `assets/images/${this.photograph.folderMediaName}/${element.video}`;
                 const video = document.createElement('video');
                 video.classList.add('article__video');
-                video.setAttribute('src', pictureSrc);
+                video.setAttribute('src', videoSrc);
                 video.setAttribute('type', `video/${element.video.split('.')[1]}`);
                 video.setAttribute(
                     'aria-label',
@@ -112,7 +111,8 @@ class PhotographerMediaFactory {
     }
 
     get mediasPhotographerSortedByKey() {
-        let word = document.querySelector('.dropdown-items button[tabindex="1"]');
+        // search in sort list btn selected (tabindex=2)
+        let word = document.querySelector('.dropdown-items button[tabindex="2"]');
         if (word === null) {
             word = document.querySelector('.dropdown-items button').innerText;
         } else {

@@ -76,24 +76,25 @@
   <div id="lightbox_modal">
     <div class="lightbox_modal-content">
       <div class="lightbox-header">
-        <button aria-label="Close" onclick="closeLightbox()" class="btn__modal-close">
-          <i class="fa-solid fa-xmark" aria-label="Croix de fermeture"></i></button>
+        <button aria-label="Fermer" onclick="closeLightbox()" class="btn__modal-close">
+          <i class="fa-solid fa-xmark" aria-describedby="Croix de fermeture"></i></button>
       </div>
       <div class="lightbox-content">
-        <button class="lightbox-button"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="lightbox-button"><i class="fa-solid fa-chevron-left"
+            aria-describedby="Photo Précédente"></i></button>
         <div class="lightbox-details">
           <figure class="lightbox-loading-container">
             <figcaption></figcaption>
           </figure>
         </div>
-        <button class="lightbox-button"><i class="fa-solid fa-chevron-right" aria-describedby="Fermer"
+        <button class="lightbox-button"><i class="fa-solid fa-chevron-right" aria-describedby="Photo Suivante"
             role="button"></i></button>
       </div>
     </div>
 
   </div>
   <script src="./scripts/factories/photographer.js"></script>
-  <script src="./scripts/factories/mediaFactory.js"></script>
+  <script src="./scripts/factories/media.js"></script>
   <script src="./scripts/pages/photographer.js"></script>
   <script src="./scripts/models/photographer.js"></script>
   <script src="./scripts/utils/contactForm.js"></script>

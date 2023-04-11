@@ -419,6 +419,9 @@ input[data-error]::after {
     width: 178px;
     z-index: 1;
 }
+.total__likes-paid i {
+    margin-left: 4px;
+}
 
 /*------------------------------------------------ LightBox Modal   */
 #lightbox_modal {

@@ -11,7 +11,7 @@ async function getDataApi() {
     }
 }
 
-function errorPage() {
+const errorPage = () => {
     const divMain = document.getElementById('main');
     divMain.remove();
     photographersSection = document.createElement('div');
@@ -20,9 +20,9 @@ function errorPage() {
     photographersSection.appendChild(errorTitle);
     document.title = 'Fisheye - Erreur 404';
     document.body.appendChild(photographersSection);
-}
+};
 
-function updateSelectSort(e) {
+const updateSelectSort = (e) => {
     const arrayDivBtnSort = Object.values(document.querySelector('.dropdown-items').children);
     // set btn clicked on first in list
     let tabIndexNber = 3;
@@ -41,9 +41,9 @@ function updateSelectSort(e) {
             }
         },
     );
-}
+};
 
-async function eraseContent() {
+const eraseContent = () => {
     let mediaList = document.getElementsByClassName(
         'photograph__content-list',
     )[0];
@@ -54,11 +54,12 @@ async function eraseContent() {
     mediaList = document.createElement('div');
     mediaList.classList.add('photograph__content-list');
     photographContent.appendChild(mediaList);
-}
+};
+
 const openDropDown = document.querySelector('.dropdown-items');
-function closeDropDown() {
+const closeDropDown = () => {
     openDropDown.style.overflow = 'hidden';
-}
+};
 
 async function init() {
     // extract datas from API
@@ -72,18 +73,19 @@ async function init() {
     media.map(
         (data) => data.photographerId === parseInt(idUrl, 10) && mediasPhotographer.push(data),
     );
+    console.log(mediasPhotographer);
     if (dataPhotographer.length === 0) {
         errorPage();
     } else {
         const photographer = new PhotographerFactory(dataPhotographer[0]);
         const insertCardIntoDom = photographer.getUserHeaderDOM;
         if (insertCardIntoDom) {
-            const photographerMedia = new PhotographerMediaFactory(
+            const photographerMedia = new MediaFactory(
                 photographer,
                 idUrl,
                 mediasPhotographer,
             );
-            const sortMediasPhotographer = photographerMedia.mediasPhotographerSortedByKey;
+            let sortMedias = photographerMedia.mediasPhotographerSortedByKey;
             let insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
             const insertTotalLikesToDOM = photographerMedia.insertTotalLikesDOM;
             // addEventListener on click into custom select to update sort Media
@@ -93,10 +95,10 @@ async function init() {
                 (element) => {
                     element.addEventListener('click', async (e) => {
                         openDropDown.style.overflow = 'visible';
-                        await updateSelectSort(e);
-                        await eraseContent();
+                        updateSelectSort(e);
+                        eraseContent();
                         sortMedias = await photographerMedia.mediasPhotographerSortedByKey;
-                        insertMediaToDOM = await photographerMedia.insertMediaCardToDOM;
+                        insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
                         setTimeout(closeDropDown, 200);
                     });
                     element.addEventListener('mouseover', () => {

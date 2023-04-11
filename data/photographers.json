@@ -202,6 +202,15 @@
 			"price": 70
 		},
 		{
+			"id": 23394385,
+			"photographerId": 925,
+			"title": "Butterfly Sport in the Swim",
+			"image": "Sport_Butterfly.jpg",
+			"likes": 58,
+			"date": "2019-07-19",
+			"price": 70
+		},
+		{
 			"id": 87367293,
 			"photographerId": 925,
 			"title": "Musical Festival Singer",
@@ -307,6 +316,14 @@
 			"image": "Portrait_AfternoonBreak.jpg",
 			"likes": 25,
 			"date": "2019-01-02",
+			"price": 45
+		},{
+			"id": 525834235,
+			"photographerId": 527,
+			"title": "Travel on the Road",
+			"image": "Travel_On_the_Road.jpg",
+			"likes": 47,
+			"date": "2019-01-03",
 			"price": 45
 		},
 
