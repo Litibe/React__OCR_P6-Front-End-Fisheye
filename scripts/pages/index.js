@@ -3,8 +3,7 @@ async function getDataApi() {
         const response = await fetch('./data/photographers.json');
         return response.json();
     } catch {
-    // eslint-disable-next-line no-console
-        console.log('erreur 500 connect API');
+    // if not data, error page loaded
         return undefined;
     }
 }
