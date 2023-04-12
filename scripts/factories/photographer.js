@@ -39,14 +39,17 @@ class PhotographerFactory {
             'aria-label',
             `Ville et Pays du Photographe ${this.photograph.name}`,
         );
+        city.setAttribute('tabindex', '1');
         const tagline = document.createElement('p');
         tagline.innerText = `${this.photograph.tagline}`;
         tagline.classList.add('photographer-tagline');
         tagline.setAttribute('aria-label', `Slogan du Photographe ${this.photograph.name}`);
+        tagline.setAttribute('tabindex', '1');
         const price = document.createElement('p');
         price.innerText = `${this.photograph.price}€/jour`;
         price.classList.add('photographer-price');
         price.setAttribute('aria-label', `Prix du Photographe ${this.photograph.name}`);
+        price.setAttribute('tabindex', '1');
         article.appendChild(city);
         article.appendChild(tagline);
         article.appendChild(price);
