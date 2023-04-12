@@ -25,6 +25,7 @@ class PhotographerFactory {
         const imgContainer = document.createElement('div');
         imgContainer.classList.add('img-container');
         imgContainer.appendChild(img);
+        img.setAttribute('tabindex', '1');
         link.appendChild(imgContainer);
         // title h2
         const h2 = document.createElement('h2');

@@ -77,7 +77,7 @@ class MediaFactory {
             const iconLike = document.createElement('span');
             iconLike.innerHTML = '<i class="fa-solid fa-heart addLike"></i>';
             iconLike.setAttribute('tabindex', '5');
-            iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer pour Aimer le Media et ajouter un like');
+            iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer pour ajouter un like sur le Media');
 
             const integrationNewLike = (divImgLikes) => {
                 const titleLike = divImgLikes.parentElement.children[0].innerText;
@@ -124,11 +124,11 @@ class MediaFactory {
         nberLikes.innerText = this.totalLikes;
         nberLikes.classList.add('totalLikes');
         nberLikes.setAttribute('aria-label', "Nombre total de likes pour l'artiste");
+        nberLikes.setAttribute('tabindex', '100');
         const iconLike = document.createElement('span');
         iconLike.innerHTML = '<i class="fa-solid fa-heart " aria-label="Icône likes"></i>';
         divNberLikes.appendChild(nberLikes);
         divNberLikes.appendChild(iconLike);
-        divNberLikes.setAttribute('tabindex', '100');
         divLikes.appendChild(divNberLikes);
         const paidDay = document.createElement('p');
         paidDay.innerText = `${this.photograph.price}€ / jour`;

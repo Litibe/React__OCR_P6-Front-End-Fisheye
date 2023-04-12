@@ -13,12 +13,12 @@
 <body>
   <header>
     <nav aria-label="main">
-      <a href="./index.html" aria-label="Lien vers la Page d'Accueil">
+      <a href="./index.html" tabindex="1" aria-label="Lien vers la Page d'Accueil">
         <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home Page"></a>
-      <h1 class="title_homepage">Nos photographes</h1>
+      <h1 class="title_homepage" tabindex="1">Nos photographes</h1>
     </nav>
   </header>
-  <main id="main" aria-label="Liste de nos Photographes">
+  <main id="main" tabindex="1" aria-label="Liste de nos Photographes">
     <div class="photographer_section" role="list"></div>
   </main>
   <script src="./scripts/factories/photographer.js"></script>
