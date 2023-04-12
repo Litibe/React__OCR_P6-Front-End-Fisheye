@@ -63,7 +63,7 @@ class PhotographerFactory {
             '.photograph__header-details',
         );
         const h1 = document.createElement('h1');
-        h1.setAttribute('aria-label', 'Identité du Photographe');
+        h1.setAttribute('aria-label', `Identité du Photographe : ${this.photograph.name}`);
         h1.innerText = this.photograph.name;
         h1.setAttribute('tabindex', '1');
         divDetail.appendChild(h1);
@@ -71,10 +71,9 @@ class PhotographerFactory {
         city.innerText = `${this.photograph.city}, ${this.photograph.country}`;
         city.setAttribute(
             'aria-label',
-            `Ville et Pays du Photographe ${this.photograph.name}`,
+            `Ville et Pays du Photographe ${this.photograph.name} : ${this.photograph.city}, ${this.photograph.country} `,
         );
         city.classList.add('photographer-details-city');
-        city.style.fontSize = '24px';
         city.setAttribute('tabindex', '1');
         divDetail.appendChild(city);
         const tagline = document.createElement('p');
@@ -82,7 +81,7 @@ class PhotographerFactory {
         tagline.classList.add('photographer-details-tagline');
         tagline.setAttribute(
             'aria-label',
-            `Slogan du Photographe ${this.photograph.name}`,
+            `Slogan du Photographe ${this.photograph.name} : ${this.photograph.tagline}`,
         );
         tagline.setAttribute('tabindex', '1');
         divDetail.appendChild(tagline);
@@ -96,11 +95,11 @@ class PhotographerFactory {
         );
         img.setAttribute('tabindex', '1');
         img.setAttribute('loading', 'lazy');
-        img.setAttribute('alt', `Photo de ${this.photograph.name}`);
+        img.setAttribute('alt', `Photo  du Photographe ${this.photograph.name}`);
         divImg.appendChild(img);
         // part Name Into Modal
         const h2Name = document.createElement('h2');
-        h2Name.setAttribute('aria-label', 'Identité du Photographe');
+        h2Name.setAttribute('aria-label', `Identité du Photographe : ${this.photograph.name}`);
         h2Name.innerText = this.photograph.name;
         h2Name.setAttribute('tabindex', '1');
         document
@@ -108,7 +107,6 @@ class PhotographerFactory {
             .appendChild(h2Name);
         document.getElementById('idPhotographer').value = this.photograph.id;
         document.getElementById('namePhotographer').value = this.photograph.name;
-
         return true;
     }
 }

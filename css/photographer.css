@@ -45,7 +45,7 @@ header {
 }
 .photographer-details-city {
     color: var(--main-color);
-    font-size: 32px;
+    font-size: 24px;
     line-height: 26px;
     margin: 0;
     padding: 8px 0;
