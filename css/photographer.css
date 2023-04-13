@@ -131,7 +131,8 @@ header {
     padding: 35px;
     margin: auto;
     margin-top: 50px;
-    height: 900px;
+    min-height: 900px;
+    height: min-content;
 }
 .modal:after {
     content: "Merci de votre intêret envers l'artiste";
@@ -488,6 +489,7 @@ input[data-error]::after {
     height: 80vh;
     display: flex;
     flex-direction: column-reverse;
+    height: fit-content;
 }
 .lightbox-loading-container button {
     z-index: 3;
@@ -509,6 +511,7 @@ input[data-error]::after {
     max-height: 80vh;
     object-fit: contain;
     object-position: center;
+    margin: auto;
     z-index: 2;
 }
 .lightbox-loading-container > video {
@@ -516,5 +519,6 @@ input[data-error]::after {
     max-height: 80vh;
     object-fit: cover;
     object-position: center;
+    margin: auto;
     z-index: 2;
 }

@@ -2,6 +2,7 @@ const updatePhotoIntoLightbox = (media) => {
     const container = document.querySelector(
         '.lightbox-loading-container',
     );
+    container.setAttribute('tabindex', '-1');
     // delete ancious media support
     if (container.children[1] !== undefined) {
         container.children[1].remove();
@@ -22,7 +23,10 @@ const updatePhotoIntoLightbox = (media) => {
     }));
     const originalSrc = (mediaBox.getAttribute('src')).replace('thumbnail/', '');
     mediaBox.setAttribute('src', originalSrc);
+    mediaBox.setAttribute('aria-label', `Media ${media.firstChild.getAttribute('alt')} ouvert en plein-écran`);
+    mediaBox.setAttribute('tabindex', '6');
     container.appendChild(mediaBox);
+    mediaBox.focus();
     titleMediaBox.innerHTML = media.firstChild.getAttribute('alt');
 };
 
@@ -94,6 +98,12 @@ const navigationKey = (event) => {
         nextPhoto();
     } else if (event.key === 'Escape') {
         closeLightbox();
+    } else if (event.key === 'Enter') {
+        if (event.srcElement.lastChild.className === 'fa-solid fa-chevron-left') {
+            previousPhoto();
+        } else if (event.srcElement.lastChild.className === 'fa-solid fa-chevron-right') {
+            nextPhoto();
+        }
     }
 };
 

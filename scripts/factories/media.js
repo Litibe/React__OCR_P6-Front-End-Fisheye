@@ -73,7 +73,7 @@ class MediaFactory {
             const nberLikes = document.createElement('span');
             nberLikes.innerText = element.likes;
             nberLikes.setAttribute('tabindex', '5');
-            nberLikes.setAttribute('aria-label', 'Nomnbre de Likes sur le Media');
+            nberLikes.setAttribute('aria-label', `Nombre de Likes sur le Media : ${element.likes}`);
             const iconLike = document.createElement('span');
             iconLike.innerHTML = '<i class="fa-solid fa-heart addLike"></i>';
             iconLike.setAttribute('tabindex', '5');
@@ -123,7 +123,7 @@ class MediaFactory {
         const nberLikes = document.createElement('span');
         nberLikes.innerText = this.totalLikes;
         nberLikes.classList.add('totalLikes');
-        nberLikes.setAttribute('aria-label', "Nombre total de likes pour l'artiste");
+        nberLikes.setAttribute('aria-label', `Nombre total de likes pour l'artiste : ${this.totalLikes}`);
         nberLikes.setAttribute('tabindex', '100');
         const iconLike = document.createElement('span');
         iconLike.innerHTML = '<i class="fa-solid fa-heart " aria-label="Icône likes"></i>';
