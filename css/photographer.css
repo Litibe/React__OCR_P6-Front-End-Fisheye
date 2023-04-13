@@ -303,8 +303,11 @@ input[data-error]::after {
 .item-sort:focus {
     background-color: var(--bg-modal);
     color: black;
+    z-index: 1;
 }
-
+.btn-selected {
+    order: 1;
+}
 .dropdown-items:hover + i,
 .dropdown-items:focus + i {
     transform-origin: 50% 50%;
@@ -322,15 +325,17 @@ input[data-error]::after {
     cursor: pointer;
     text-align: start;
     width: 150px;
+    z-index: 1;
 }
-.dropdown-items button[tabindex="2"] {
+
+.dropdown-items :nth-child(1) {
     border-radius: 5px 5px 0 0;
 }
 
-.dropdown-items button[tabindex="3"] {
+.dropdown-items :nth-child(2) {
     border-radius: 0;
 }
-.dropdown-items button[tabindex="4"] {
+.dropdown-items :nth-child(3) {
     border-radius: 0 0 5px 5px;
 }
 

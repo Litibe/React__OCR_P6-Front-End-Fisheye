@@ -1,10 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const idUrl = urlParams.get('id');
+let localPhotographerMedia;
+const arrayDivBtnSort = Object.values(document.querySelector('.dropdown-items').children);
 
 async function getDataApi() {
     try {
         const response = await fetch('./data/photographers.json');
-        const data = response.json();
+        const data = await response.json();
         return data;
     } catch {
         return undefined;
@@ -21,26 +23,11 @@ const errorPage = () => {
     document.title = 'Fisheye - Erreur 404';
     document.body.appendChild(photographersSection);
 };
-
-const updateSelectSort = (e) => {
-    const arrayDivBtnSort = Object.values(document.querySelector('.dropdown-items').children);
-    // set btn clicked on first in list
-    let tabIndexNber = 3;
-    let orderNber = 1;
-    arrayDivBtnSort.forEach(
-        (element) => {
-            if (element.innerText === e.target.innerText) {
-                element.style.order = '1';
-                element.setAttribute('tabindex', '2');
-            } else {
-                element.style.order = orderNber.toString();
-                element.setAttribute('tabindex', tabIndexNber.toString());
-                element.style.order = tabIndexNber.toString();
-                tabIndexNber += 1;
-                orderNber += 1;
-            }
-        },
-    );
+const openDropDown = () => {
+    document.querySelector('.dropdown-items').style.overflow = 'visible';
+};
+const closeDropDown = (e) => {
+    document.querySelector('.dropdown-items').style.overflow = 'hidden';
 };
 
 const eraseContent = () => {
@@ -56,9 +43,37 @@ const eraseContent = () => {
     photographContent.appendChild(mediaList);
 };
 
-const openDropDown = document.querySelector('.dropdown-items');
-const closeDropDown = () => {
-    openDropDown.style.overflow = 'hidden';
+const updateSelectSort = async (e) => {
+    console.log(e);
+    let elementId;
+    arrayDivBtnSort.forEach(
+        (element) => {
+            if (element.innerText === e.target.innerText) {
+                element.setAttribute('id', 'btn-selected');
+                elementId = element;
+            } else {
+                element.removeAttribute('id');
+                const newBtn = document.createElement('button');
+                const arrayAttributes = Object.values(element.attributes);
+                arrayAttributes.forEach(((attr) => {
+                    newBtn.innerText = element.innerText;
+                    newBtn.setAttribute(attr.name, attr.value);
+                }));
+                element.remove();
+                document.querySelector('.dropdown-items').appendChild(element);
+            }
+        },
+    );
+    // if btn clicked by keyboard === last element of list to display btn-selected
+    if (elementId !== undefined && e.clientX === 0) {
+        elementId.remove();
+        document.querySelector('.dropdown-items').appendChild(elementId);
+    }
+
+    // focus on first media after click btn sort
+    const firstMedia = document.querySelector('.photograph__content-list').firstChild.firstChild;
+    firstMedia.focus();
+    return true;
 };
 
 async function init() {
@@ -84,34 +99,32 @@ async function init() {
                 idUrl,
                 mediasPhotographer,
             );
+            localPhotographerMedia = photographerMedia;
             let sortMedias = photographerMedia.mediasPhotographerSortedByKey;
             let insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
             const insertTotalLikesToDOM = photographerMedia.insertTotalLikesDOM;
             // addEventListener on click into custom select to update sort Media
-            const arrayDivBtnSort = Object.values(document.querySelectorAll('.item-sort'));
-
             arrayDivBtnSort.forEach(
                 (element) => {
-                    element.addEventListener('click', (e) => {
-                        openDropDown.style.overflow = 'visible';
-                        updateSelectSort(e);
+                    element.addEventListener('click', async (e) => {
+                        const updateBtnSort = await updateSelectSort(e, photographerMedia);
                         eraseContent();
-                        sortMedias = photographerMedia.mediasPhotographerSortedByKey;
-                        insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
-                        setTimeout(closeDropDown, 200);
+                        if (updateBtnSort === true) {
+                            sortMedias = await photographerMedia.mediasPhotographerSortedByKey;
+                            insertMediaToDOM = photographerMedia.insertMediaCardToDOM;
+                            closeDropDown(e);
+                        }
                     });
-                    element.addEventListener('mouseover', () => {
-                        openDropDown.style.overflow = 'visible';
+                    element.addEventListener('mouseover', (e) => {
+                        openDropDown(e);
                     });
-                    element.addEventListener('focus', () => {
-                        openDropDown.style.overflow = 'visible';
+                    element.addEventListener('focus', (e) => {
+                        openDropDown(e);
                     });
-                    element.addEventListener('mouseout', () => {
-                        closeDropDown();
+                    element.addEventListener('mouseout', (e) => {
+                        closeDropDown(e);
                     });
-                    element.addEventListener('blur', () => {
-                        closeDropDown();
-                    });
+                    element.addEventListener('blur', (e) => closeDropDown(e));
                 },
             );
         }

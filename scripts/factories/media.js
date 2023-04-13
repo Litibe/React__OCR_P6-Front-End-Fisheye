@@ -143,12 +143,7 @@ class MediaFactory {
 
     get mediasPhotographerSortedByKey() {
         // search in sort list btn selected (tabindex=2)
-        let word = document.querySelector('.dropdown-items button[tabindex="2"]');
-        if (word === null) {
-            word = document.querySelector('.dropdown-items button').innerText;
-        } else {
-            word = word.innerText;
-        }
+        const word = document.getElementById('btn-selected').innerText;
         if (word === 'Popularité') {
             this.sortKey = 'likes';
         } if (word === 'Date') {

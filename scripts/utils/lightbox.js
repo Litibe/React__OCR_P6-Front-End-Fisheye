@@ -81,17 +81,10 @@ const closeLightbox = () => {
     // enable tabindex into DOM
     const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '1'));
-    const btnSortTabIndex2 = document.querySelector("[tabindex='-2']");
-    btnSortTabIndex2.setAttribute('tabindex', '2');
-    const btnSortTabIndex3 = document.querySelector("[tabindex='-3']");
-    btnSortTabIndex3.setAttribute('tabindex', '3');
-    const btnSortTabIndex4 = document.querySelector("[tabindex='-4']");
-    btnSortTabIndex4.setAttribute('tabindex', '4');
     const allTabIndexMedia = document.querySelectorAll("[tabindex='-5']");
     allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '5'));
     const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='-100']");
     totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '100'));
-    document.body.style.position = 'initial';
 };
 
 const navigationKey = (event) => {
@@ -114,18 +107,10 @@ const displayLightbox = () => {
     // disable tabindex into DOM
     const allTabIndexHeader = document.querySelectorAll("[tabindex='1']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
-    const btnSortTabIndex2 = document.querySelector("[tabindex='2']");
-    btnSortTabIndex2.setAttribute('tabindex', '-2');
-    const btnSortTabIndex3 = document.querySelector("[tabindex='3']");
-    btnSortTabIndex3.setAttribute('tabindex', '-3');
-    const btnSortTabIndex4 = document.querySelector("[tabindex='4']");
-    btnSortTabIndex4.setAttribute('tabindex', '-4');
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
     const allTabIndexMedia = document.querySelectorAll("[tabindex='5']");
     allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-5'));
     const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='100']");
     totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-100'));
-    document.body.style.position = 'fixed';
 };
 
 const openPhoto = (divPhoto) => {

@@ -23,7 +23,12 @@ const displayData = (dataReceived) => {
     }
 };
 
-async function init() {
+const init = async () => {
+    const dataReceived = await getDataApi();
+    displayData(dataReceived);
+};
+
+async function inits() {
     const dataReceived = await getDataApi();
     displayData(dataReceived);
 }
