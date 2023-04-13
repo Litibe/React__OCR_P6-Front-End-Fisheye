@@ -3,7 +3,7 @@ const idUrl = urlParams.get('id');
 let localPhotographerMedia;
 const arrayDivBtnSort = Object.values(document.querySelector('.dropdown-items').children);
 
-async function getDataApi() {
+const getDataApi = async () => {
     try {
         const response = await fetch('./data/photographers.json');
         const data = await response.json();
@@ -11,7 +11,7 @@ async function getDataApi() {
     } catch {
         return undefined;
     }
-}
+};
 
 const errorPage = () => {
     const divMain = document.getElementById('main');
@@ -44,7 +44,6 @@ const eraseContent = () => {
 };
 
 const updateSelectSort = async (e) => {
-    console.log(e);
     let elementId;
     arrayDivBtnSort.forEach(
         (element) => {
@@ -68,11 +67,8 @@ const updateSelectSort = async (e) => {
     if (elementId !== undefined && e.clientX === 0) {
         elementId.remove();
         document.querySelector('.dropdown-items').appendChild(elementId);
+        // document.querySelector('.dropdown-items').lastChild.focus();
     }
-
-    // focus on first media after click btn sort
-    const firstMedia = document.querySelector('.photograph__content-list').firstChild.firstChild;
-    firstMedia.focus();
     return true;
 };
 
@@ -80,6 +76,9 @@ async function init() {
     // extract datas from API
     const { photographers, media } = await getDataApi();
     // extract data only from Id Photographer
+    if (photographers === undefined) {
+        errorPage();
+    }
     const dataPhotographer = [];
     const mediasPhotographer = [];
     photographers.map(

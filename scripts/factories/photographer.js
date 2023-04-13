@@ -25,8 +25,8 @@ class PhotographerFactory {
         const imgContainer = document.createElement('div');
         imgContainer.classList.add('img-container');
         imgContainer.appendChild(img);
-        img.setAttribute('tabindex', '1');
         link.appendChild(imgContainer);
+        link.setAttribute('tabindex', '1');
         // title h2
         const h2 = document.createElement('h2');
         h2.textContent = this.photograph.name;
@@ -102,7 +102,7 @@ class PhotographerFactory {
         const h2Name = document.createElement('h2');
         h2Name.setAttribute('aria-label', `Identité du Photographe : ${this.photograph.name}`);
         h2Name.innerText = this.photograph.name;
-        h2Name.setAttribute('tabindex', '1');
+        h2Name.setAttribute('tabindex', '2');
         document
             .getElementsByClassName('formData namePhotographer')[0]
             .appendChild(h2Name);

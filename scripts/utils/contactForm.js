@@ -1,11 +1,32 @@
-const displayModal = () => {
-    const modal = document.getElementById('contact_modal');
-    modal.style.display = 'block';
-};
-
 const closeModal = () => {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'none';
+    // enable tabindex into DOM
+    const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '1'));
+    const allTabIndexMedia = document.querySelectorAll("[tabindex='-5']");
+    allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '5'));
+    const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='-100']");
+    totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '100'));
+};
+
+const navigationKey = (event) => {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+};
+
+const displayModal = () => {
+    const modal = document.getElementById('contact_modal');
+    modal.style.display = 'block';
+    document.addEventListener('keydown', (e) => navigationKey(e));
+    // disable tabindex into DOM
+    const allTabIndexHeader = document.querySelectorAll("[tabindex='1']");
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
+    const allTabIndexMedia = document.querySelectorAll("[tabindex='5']");
+    allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-5'));
+    const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='100']");
+    totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-100'));
 };
 
 /// //// FUNCTION SIGNAL TO USER IF DATA SUCCESS OR DATA ERROR ///////////
