@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - photographe </title>
+  <title>Fisheye - Page de Présentation du photographe </title>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
           <button tabindex="0" aria-label="Trier par Date" class="item-sort">Date</button>
           <button tabindex="0" aria-label="Trier par Titre" class="item-sort">Titre</button>
         </div>
-        <i class="fa-solid fa-angle-down" aria-hidden=true></i>
+        <strong class="fa-solid fa-angle-down" aria-hidden=true></strong>
       </div>
       <div class="photograph__content-list"></div>
     </div>
@@ -48,7 +48,8 @@
         <div class="formData">
           <label tabindex="-1" for="firstname">Prénom</label>
           <input tabindex="-1" class="text-control" type="text" id="firstname" name="firstname"
-            autocomplete="given-name" autofocus onchange="checkInputText(this)" required placeholder="ex: John">
+            autocomplete="given-name" autofocus onchange="checkInputText(this)" required aria-required=true
+            placeholder="ex: John">
         </div>
         <div class="formData">
           <label tabindex="-1" for="lastname">Nom</label>
@@ -58,11 +59,11 @@
         <div class="formData">
           <label tabindex="-1" for="email">E-mail</label>
           <input tabindex="-1" class="text-control" type="email" id="email" name="email" autocomplete="email"
-            onchange="checkValueEmail(this)" required placeholder="ex: adresse@domaine.fr">
+            onchange="checkValueEmail(this)" required aria-required=true placeholder="ex: adresse@domaine.fr">
         </div>
         <div class="formData">
           <label tabindex="-1" for="msg">Votre message</label>
-          <textarea tabindex="-1" class="text-area" id="msg" name="msg" required rows="5"
+          <textarea tabindex="-1" class="text-area" id="msg" name="msg" required aria-required=true rows="5"
             placeholder="ex: Je souhaite un renseignement sur ..."></textarea>
         </div>
         <div class="formData">
@@ -75,20 +76,20 @@
     <div class="lightbox_modal-content" role="dialog">
       <div class="lightbox-header">
         <button tabindex="0" onclick="closeLightbox()" aria-label="Croix de fermeture" class="btn__modal-close">
-          <i class="fa-solid fa-xmark"></i></button>
+          <strong class="fa-solid fa-xmark"></strong></button>
       </div>
       <div class="lightbox-content">
         <button class="lightbox-button" tabindex="0"
-          aria-label="Button Flèche vers la gauche pour accéder Photo Précédente"><i
-            class="fa-solid fa-chevron-left"></i></button>
+          aria-label="Button Flèche vers la gauche pour accéder Photo Précédente"><strong
+            class="fa-solid fa-chevron-left"></strong></button>
         <div class="lightbox-details">
           <figure class="lightbox-loading-container">
             <figcaption></figcaption>
           </figure>
         </div>
         <button class="lightbox-button" tabindex="0"
-          aria-label="Button Flèche vers la droite pour accéder à la Photo Suivante"><i
-            class="fa-solid fa-chevron-right"></i></button>
+          aria-label="Button Flèche vers la droite pour accéder à la Photo Suivante"><strong
+            class="fa-solid fa-chevron-right"></strong></button>
       </div>
     </div>
 
