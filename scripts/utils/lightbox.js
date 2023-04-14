@@ -24,10 +24,10 @@ const updatePhotoIntoLightbox = (media) => {
     const originalSrc = (mediaBox.getAttribute('src')).replace('thumbnail/', '');
     mediaBox.setAttribute('src', originalSrc);
     mediaBox.setAttribute('aria-label', `Media ${media.firstChild.getAttribute('alt')} ouvert en plein-écran`);
-    mediaBox.setAttribute('tabindex', '6');
+    mediaBox.setAttribute('tabindex', '0');
     container.appendChild(mediaBox);
     mediaBox.focus();
-    titleMediaBox.innerHTML = media.firstChild.getAttribute('alt');
+    titleMediaBox.innerHTML = media.firstChild.getAttribute('aria-label').replace('Photo ', '');
 };
 
 const nextPhoto = () => {
@@ -84,11 +84,7 @@ const closeLightbox = () => {
     document.querySelector('main').style = 'filter: blur(0px)';
     // enable tabindex into DOM
     const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '1'));
-    const allTabIndexMedia = document.querySelectorAll("[tabindex='-5']");
-    allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '5'));
-    const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='-100']");
-    totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '100'));
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
 };
 
 const navigationKey = (event) => {
@@ -115,12 +111,8 @@ const displayLightbox = () => {
     document.querySelector('main').style = 'filter: blur(2px)';
     document.addEventListener('keydown', (e) => navigationKey(e));
     // disable tabindex into DOM
-    const allTabIndexHeader = document.querySelectorAll("[tabindex='1']");
+    const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
-    const allTabIndexMedia = document.querySelectorAll("[tabindex='5']");
-    allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-5'));
-    const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='100']");
-    totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-100'));
 };
 
 const openPhoto = (divPhoto) => {

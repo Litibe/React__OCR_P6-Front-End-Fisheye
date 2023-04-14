@@ -19,14 +19,14 @@ class PhotographerFactory {
         );
         const img = document.createElement('img');
         img.setAttribute('src', this.photograph.srcPortrat);
-        img.setAttribute('aria-label', `Portrait du Photographe ${this.photograph.name}`);
-        img.setAttribute('alt', `Photographe ${this.photograph.name}`);
+        img.setAttribute('aria-label', 'Portrait du Photographe ');
+        img.setAttribute('alt', ` ${this.photograph.name}`);
         img.setAttribute('loading', 'lazy');
         const imgContainer = document.createElement('div');
         imgContainer.classList.add('img-container');
         imgContainer.appendChild(img);
         link.appendChild(imgContainer);
-        link.setAttribute('tabindex', '1');
+        link.setAttribute('tabindex', '0');
         // title h2
         const h2 = document.createElement('h2');
         h2.textContent = this.photograph.name;
@@ -38,19 +38,19 @@ class PhotographerFactory {
         city.classList.add('photographer-city');
         city.setAttribute(
             'aria-label',
-            `Ville et Pays du Photographe ${this.photograph.name}`,
+            `Ville et Pays du Photographe ${this.photograph.name} : ${this.photograph.city}, ${this.photograph.country} `,
         );
-        city.setAttribute('tabindex', '1');
+        city.setAttribute('tabindex', '0');
         const tagline = document.createElement('p');
         tagline.innerText = `${this.photograph.tagline}`;
         tagline.classList.add('photographer-tagline');
-        tagline.setAttribute('aria-label', `Slogan du Photographe ${this.photograph.name}`);
-        tagline.setAttribute('tabindex', '1');
+        tagline.setAttribute('aria-label', `Slogan du Photographe ${this.photograph.name} : ${this.photograph.tagline}`);
+        tagline.setAttribute('tabindex', '0');
         const price = document.createElement('p');
         price.innerText = `${this.photograph.price}€/jour`;
         price.classList.add('photographer-price');
-        price.setAttribute('aria-label', `Prix du Photographe ${this.photograph.name}`);
-        price.setAttribute('tabindex', '1');
+        price.setAttribute('aria-label', `Prix du Photographe ${this.photograph.name} : ${this.photograph.price}€ par jour`);
+        price.setAttribute('tabindex', '0');
         article.appendChild(city);
         article.appendChild(tagline);
         article.appendChild(price);
@@ -58,15 +58,15 @@ class PhotographerFactory {
     }
 
     get getUserHeaderDOM() {
-        document.title = `Fisheye - Photographe ${this.photograph.name}`;
+        document.title = `Fisheye - Page du Photographe ${this.photograph.name}`;
         // part Details
         const divDetail = document.querySelector(
             '.photograph__header-details',
         );
         const h1 = document.createElement('h1');
-        h1.setAttribute('aria-label', `Identité du Photographe : ${this.photograph.name}`);
+        h1.setAttribute('aria-label', `Page de Présentation des Oeuvres du Photographe : ${this.photograph.name}`);
         h1.innerText = this.photograph.name;
-        h1.setAttribute('tabindex', '1');
+        h1.setAttribute('tabindex', '0');
         divDetail.appendChild(h1);
         const city = document.createElement('p');
         city.innerText = `${this.photograph.city}, ${this.photograph.country}`;
@@ -75,7 +75,7 @@ class PhotographerFactory {
             `Ville et Pays du Photographe ${this.photograph.name} : ${this.photograph.city}, ${this.photograph.country} `,
         );
         city.classList.add('photographer-details-city');
-        city.setAttribute('tabindex', '1');
+        city.setAttribute('tabindex', '0');
         divDetail.appendChild(city);
         const tagline = document.createElement('p');
         tagline.innerText = this.photograph.tagline;
@@ -84,30 +84,25 @@ class PhotographerFactory {
             'aria-label',
             `Slogan du Photographe ${this.photograph.name} : ${this.photograph.tagline}`,
         );
-        tagline.setAttribute('tabindex', '1');
+        tagline.setAttribute('tabindex', '0');
         divDetail.appendChild(tagline);
         // part IMG
         const divImg = document.querySelector('.photograph__header-img');
         const img = document.createElement('img');
         img.setAttribute('src', this.photograph.srcPortrat);
         img.setAttribute(
-            'title',
+            'aria-label',
             `Photo Portrait du Photographe ${this.photograph.name}`,
         );
-        img.setAttribute('tabindex', '1');
+        img.setAttribute('tabindex', '0');
         img.setAttribute('loading', 'lazy');
         img.setAttribute('alt', `Photo  du Photographe ${this.photograph.name}`);
         divImg.appendChild(img);
         // part Name Into Modal
-        const h2Name = document.createElement('h2');
+        const h2Name = document.getElementById('namePhotographerForm');
         h2Name.setAttribute('aria-label', `Identité du Photographe : ${this.photograph.name}`);
         h2Name.innerText = this.photograph.name;
-        h2Name.setAttribute('tabindex', '2');
-        document
-            .getElementsByClassName('formData namePhotographer')[0]
-            .appendChild(h2Name);
-        document.getElementById('idPhotographer').value = this.photograph.id;
-        document.getElementById('namePhotographer').value = this.photograph.name;
+        h2Name.setAttribute('tabindex', '-1');
         return true;
     }
 }

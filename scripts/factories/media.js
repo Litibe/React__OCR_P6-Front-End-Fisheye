@@ -22,9 +22,9 @@ class MediaFactory {
                 img.setAttribute('src', pictureSrc);
                 img.setAttribute(
                     'aria-label',
-                    `Photo ${element.title} du Photographe ${this.photograph.name}`,
+                    `Photo ${element.title}`,
                 );
-                img.setAttribute('alt', element.title);
+                img.setAttribute('alt', '');
                 const imgContainer = document.createElement('div');
                 imgContainer.setAttribute('onclick', 'openPhoto(this)');
                 imgContainer.addEventListener('keypress', (e) => {
@@ -32,7 +32,7 @@ class MediaFactory {
                         openPhoto(e.target);
                     }
                 });
-                imgContainer.setAttribute('tabindex', '5');
+                imgContainer.setAttribute('tabindex', '0');
                 imgContainer.appendChild(img);
                 imgContainer.classList.add('img-container');
                 article.appendChild(imgContainer);
@@ -44,7 +44,7 @@ class MediaFactory {
                 video.setAttribute('type', `video/${element.video.split('.')[1]}`);
                 video.setAttribute(
                     'aria-label',
-                    `video ${element.title} du Photographe ${this.photograph.name}`,
+                    `video ${element.title}`,
                 );
                 video.setAttribute('alt', element.title);
                 const videoContainer = document.createElement('div');
@@ -56,7 +56,7 @@ class MediaFactory {
                 });
                 videoContainer.classList.add('img-container');
                 videoContainer.appendChild(video);
-                videoContainer.setAttribute('tabindex', '5');
+                videoContainer.setAttribute('tabindex', '0');
                 article.appendChild(videoContainer);
             }
 
@@ -66,17 +66,17 @@ class MediaFactory {
             const titleImg = document.createElement('h2');
             titleImg.classList.add('article__img-title');
             titleImg.innerText = element.title;
-            titleImg.setAttribute('tabindex', '5');
+            titleImg.setAttribute('tabindex', '0');
             divTitle.appendChild(titleImg);
             const divLikes = document.createElement('div');
             divLikes.classList.add('article__img-likes');
             const nberLikes = document.createElement('span');
             nberLikes.innerText = element.likes;
-            nberLikes.setAttribute('tabindex', '5');
+            nberLikes.setAttribute('tabindex', '0');
             nberLikes.setAttribute('aria-label', `Nombre de Likes sur le Media : ${element.likes}`);
-            const iconLike = document.createElement('span');
+            const iconLike = document.createElement('button');
             iconLike.innerHTML = '<i class="fa-solid fa-heart addLike"></i>';
-            iconLike.setAttribute('tabindex', '5');
+            iconLike.setAttribute('tabindex', '0');
             iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer pour ajouter un like sur le Media');
 
             const integrationNewLike = (divImgLikes) => {
@@ -87,20 +87,23 @@ class MediaFactory {
                     this.addLikes.set(titleLike, true);
                     divImgLikes.children[0].innerText = (
                         parseInt(nberLike, 10) + 1);
+                    // update aria label after add likes
+                    nberLikes.setAttribute('aria-label', `Nombre de Likes sur le Media : ${parseInt(nberLike, 10) + 1}`);
                     totalLikes.innerText = parseInt(totalLikes.innerText, 10) + 1; // innertext
+                    totalLikes.setAttribute('aria-label', `Nombre Total de Likes : ${parseInt(totalLikes.innerText, 10) + 1}`);
                 }
             };
 
             iconLike.addEventListener('click', (e) => {
-                const divImgLikes = e.target.parentElement.parentElement;
-                integrationNewLike(divImgLikes);
-            });
-            iconLike.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    const divImgLikes = e.target.parentElement;
+                if (e.pageX === 0) {
+                    const divImgLikes = e.target.parentElement.parentElement.lastChild;
+                    integrationNewLike(divImgLikes);
+                } else {
+                    const divImgLikes = e.target.parentElement.parentElement;
                     integrationNewLike(divImgLikes);
                 }
             });
+
             divLikes.appendChild(nberLikes);
             divLikes.appendChild(iconLike);
             divTitle.appendChild(divLikes);
@@ -124,7 +127,7 @@ class MediaFactory {
         nberLikes.innerText = this.totalLikes;
         nberLikes.classList.add('totalLikes');
         nberLikes.setAttribute('aria-label', `Nombre total de likes pour l'artiste : ${this.totalLikes}`);
-        nberLikes.setAttribute('tabindex', '100');
+        nberLikes.setAttribute('tabindex', '0');
         const iconLike = document.createElement('span');
         iconLike.innerHTML = '<i class="fa-solid fa-heart " aria-label="Icône likes"></i>';
         divNberLikes.appendChild(nberLikes);
@@ -132,8 +135,8 @@ class MediaFactory {
         divLikes.appendChild(divNberLikes);
         const paidDay = document.createElement('p');
         paidDay.innerText = `${this.photograph.price}€ / jour`;
-        paidDay.setAttribute('aria-label', 'Prix facturé par jour pour cet(te) artiste');
-        paidDay.setAttribute('tabindex', '100');
+        paidDay.setAttribute('aria-label', `Prix facturé par jour pour cet(te) artiste : ${this.photograph.price} €`);
+        paidDay.setAttribute('tabindex', '0');
         divLikes.appendChild(paidDay);
         document
             .querySelector('.photograph__content')
@@ -142,7 +145,7 @@ class MediaFactory {
     }
 
     get mediasPhotographerSortedByKey() {
-        // search in sort list btn selected (tabindex=2)
+        // search in sort list btn selected
         const word = document.getElementById('btn-selected').innerText;
         if (word === 'Popularité') {
             this.sortKey = 'likes';

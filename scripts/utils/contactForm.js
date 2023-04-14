@@ -3,11 +3,9 @@ const closeModal = () => {
     modal.style.display = 'none';
     // enable tabindex into DOM
     const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '1'));
-    const allTabIndexMedia = document.querySelectorAll("[tabindex='-5']");
-    allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '5'));
-    const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='-100']");
-    totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '100'));
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
+    const allTabIndexModal = document.querySelectorAll("[tabindex='1']");
+    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-1'));
 };
 
 const navigationKeyModal = (event) => {
@@ -21,12 +19,10 @@ const displayModal = () => {
     modal.style.display = 'block';
     document.addEventListener('keydown', (e) => navigationKeyModal(e));
     // disable tabindex into DOM
-    const allTabIndexHeader = document.querySelectorAll("[tabindex='1']");
+    const allTabIndexModal = document.querySelectorAll("[tabindex='-1']");
+    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '1'));
+    const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
-    const allTabIndexMedia = document.querySelectorAll("[tabindex='5']");
-    allTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-5'));
-    const totalLikesTabIndexMedia = document.querySelectorAll("[tabindex='100']");
-    totalLikesTabIndexMedia.forEach((item) => item.setAttribute('tabindex', '-100'));
 };
 
 /// //// FUNCTION SIGNAL TO USER IF DATA SUCCESS OR DATA ERROR ///////////
@@ -163,6 +159,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
     allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-2'));
     document.querySelector('.modal').setAttribute('aria-label', "Message envoyé, Merci de votre intêret envers l'artiste");
     document.querySelector('.modal').setAttribute('tabindex', '2');
+    controlForm.set('photographer_name', document.querySelector('h1').innerText);
+    controlForm.set('photographer_id', idUrl);
     const dataJsonAPI = Object.fromEntries(controlForm);
     // only to test or remplace by fetch API code
     // eslint-disable-next-line no-console

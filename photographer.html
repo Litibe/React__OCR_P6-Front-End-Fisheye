@@ -12,23 +12,23 @@
 <body>
   <header>
     <nav aria-label="main">
-      <a href="./index.html" tabindex="1" aria-label="Lien vers la Page d'Accueil">
+      <a href="./index.html" tabindex="0" aria-label="Lien vers la Page d'Accueil">
         <img src="./assets/images/logo.png" class="logo" alt="Fisheye Home Page"></a>
     </nav>
   </header>
   <main id="main">
     <div class="photograph__header">
       <div class="photograph__header-details"> </div>
-      <button class="contact_button" tabindex="1" onclick="displayModal()"
+      <button class="contact_button" tabindex="0" onclick="displayModal()"
         aria-label="Ouvrir formulaire de contact">Contactez-moi</button>
       <div class="photograph__header-img"> </div>
     </div>
     <div class="photograph__content">
       <div class="photograph__content-sort"><span>Trier par :</span>
-        <div class="dropdown-items" aria-labelledby="Liste Option de Tri" aria-haspopup="listbox">
-          <button tabindex="1" id="btn-selected" aria-label="Trier par Popularité" class="item-sort">Popularité</button>
-          <button tabindex="1" aria-label="Trier par Date" class="item-sort">Date</button>
-          <button tabindex="1" aria-label="Trier par Title" class="item-sort">Titre</button>
+        <div class="dropdown-items" aria-label="Liste Option de Tri" aria-haspopup="listbox">
+          <button tabindex="0" id="btn-selected" aria-label="Trier par Popularité" class="item-sort">Popularité</button>
+          <button tabindex="0" aria-label="Trier par Date" class="item-sort">Date</button>
+          <button tabindex="0" aria-label="Trier par Titre" class="item-sort">Titre</button>
         </div>
         <i class="fa-solid fa-angle-down" aria-hidden=true></i>
       </div>
@@ -38,37 +38,35 @@
   <div id="contact_modal">
     <div class="modal" role="dialog" aria-describedby="modalTitle">
       <div class="modal-header" id="modalTitle">
-        <h2 tabindex="2">Contactez-moi</h2>
-        <button tabindex="3" aria-label="Close" onclick="closeModal()" type="button" class="btn__modal-close"><img
+        <h2 tabindex="-1">Contactez-moi</h2>
+        <button tabindex="-1" aria-label="Close" onclick="closeModal()" type="button" class="btn__modal-close"><img
             src="assets/icons/close.svg" alt="Close X" aria-label="Croix de fermeture"></button>
       </div>
       <form>
-        <div class="formData namePhotographer"> <input class="text-control d-none" type="number" id="idPhotographer"
-            name="idPhotographer" required> <input class="text-control d-none" type="text" id="namePhotographer"
-            name="namePhotographer" required>
+        <h2 id="namePhotographerForm">
+        </h2>
+        <div class="formData">
+          <label tabindex="-1" for="firstname">Prénom</label>
+          <input tabindex="-1" class="text-control" type="text" id="firstname" name="firstname"
+            autocomplete="given-name" autofocus onchange="checkInputText(this)" required placeholder="ex: John">
         </div>
         <div class="formData">
-          <label tabindex="2" for="firstname" tabindex="2">Prénom</label>
-          <input tabindex="2" class="text-control" type="text" id="firstname" name="firstname" autocomplete="given-name"
-            autofocus onchange="checkInputText(this)" required placeholder="ex: John">
+          <label tabindex="-1" for="lastname">Nom</label>
+          <input tabindex="-1" class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
+            onchange="checkInputText(this)" required aria-required=true placeholder="ex: Doe">
         </div>
         <div class="formData">
-          <label tabindex="2" for="lastname">Nom</label>
-          <input tabindex="2" class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
-            onchange="checkInputText(this)" required placeholder="ex: Doe">
-        </div>
-        <div class="formData">
-          <label tabindex="2" for="email">E-mail</label>
-          <input tabindex="2" class="text-control" type="email" id="email" name="email" autocomplete="email"
+          <label tabindex="-1" for="email">E-mail</label>
+          <input tabindex="-1" class="text-control" type="email" id="email" name="email" autocomplete="email"
             onchange="checkValueEmail(this)" required placeholder="ex: adresse@domaine.fr">
         </div>
         <div class="formData">
-          <label tabindex="2" for="msg">Votre message</label>
-          <textarea tabindex="2" class="text-area" id="msg" name="msg" required rows="5"
+          <label tabindex="-1" for="msg">Votre message</label>
+          <textarea tabindex="-1" class="text-area" id="msg" name="msg" required rows="5"
             placeholder="ex: Je souhaite un renseignement sur ..."></textarea>
         </div>
         <div class="formData">
-          <input tabindex="2" class="btn-submit send_button" type="button" value="Envoyer">
+          <input tabindex="-1" class="btn-submit send_button" type="button" value="Envoyer">
         </div>
       </form>
     </div>
@@ -76,11 +74,11 @@
   <div id="lightbox_modal">
     <div class="lightbox_modal-content" role="dialog">
       <div class="lightbox-header">
-        <button tabindex="8" onclick="closeLightbox()" aria-label="Croix de fermeture" class="btn__modal-close">
+        <button tabindex="0" onclick="closeLightbox()" aria-label="Croix de fermeture" class="btn__modal-close">
           <i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="lightbox-content">
-        <button class="lightbox-button" tabindex="7"
+        <button class="lightbox-button" tabindex="0"
           aria-label="Button Flèche vers la gauche pour accéder Photo Précédente"><i
             class="fa-solid fa-chevron-left"></i></button>
         <div class="lightbox-details">
@@ -88,7 +86,7 @@
             <figcaption></figcaption>
           </figure>
         </div>
-        <button class="lightbox-button" tabindex="7"
+        <button class="lightbox-button" tabindex="0"
           aria-label="Button Flèche vers la droite pour accéder à la Photo Suivante"><i
             class="fa-solid fa-chevron-right"></i></button>
       </div>
