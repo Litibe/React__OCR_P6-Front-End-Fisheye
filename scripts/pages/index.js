@@ -28,9 +28,4 @@ const init = async () => {
     displayData(dataReceived);
 };
 
-async function inits() {
-    const dataReceived = await getDataApi();
-    displayData(dataReceived);
-}
-
 init();
