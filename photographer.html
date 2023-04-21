@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-  <title>Fisheye - Page de Présentation du photographe </title>
+  <title>Fisheye - Photographe </title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     </div>
     <div class="photograph__content">
       <div class="photograph__content-sort"><span>Trier par :</span>
-        <div class="dropdown-items" aria-label="Liste Option de Tri" aria-haspopup="listbox">
+        <div class="dropdown-items" aria-haspopup="listbox">
           <button tabindex="0" id="btn-selected" aria-label="Trier par Popularité" class="item-sort">Popularité</button>
           <button tabindex="0" aria-label="Trier par Date" class="item-sort">Date</button>
           <button tabindex="0" aria-label="Trier par Titre" class="item-sort">Titre</button>
@@ -36,7 +36,7 @@
     </div>
   </main>
   <div id="contact_modal">
-    <div class="modal" role="dialog" aria-describedby="modalTitle">
+    <div class="modal" role="dialog" aria-label="Fenetre Modale pour Formulaire de contact">
       <div class="modal-header" id="modalTitle">
         <h2 tabindex="-1">Contactez-moi</h2>
         <button tabindex="-1" aria-label="Croix de fermeture" onclick="closeModal()" type="button"
@@ -44,7 +44,7 @@
             aria-label="Croix de fermeture"></button>
       </div>
       <form>
-        <h2 id="namePhotographerForm">
+        <h2 id="namePhotographerForm">Photographer
         </h2>
         <div class="formData">
           <label tabindex="-1" for="firstname">Prénom</label>
@@ -74,7 +74,7 @@
     </div>
   </div>
   <div id="lightbox_modal">
-    <div class="lightbox_modal-content" role="dialog">
+    <div class="lightbox_modal-content" role="dialog" aria-label="Fenetre de diaporama - LightBox">
       <div class="lightbox-header">
         <button tabindex="-2" onclick="closeLightbox()" aria-label="Croix de fermeture" class="btn__modal-close">
           <strong class="fa-solid fa-xmark"></strong></button>

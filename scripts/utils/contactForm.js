@@ -2,10 +2,10 @@ const closeModal = () => {
     const modal = document.getElementById('contact_modal');
     modal.style.display = 'none';
     // enable tabindex into DOM
-    const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
-    const allTabIndexModal = document.querySelectorAll("[tabindex='1']");
+    const allTabIndexModal = document.querySelectorAll("[tabindex='0']");
     allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-1'));
+    const allTabIndexHeader = document.querySelectorAll("[tabindex='-2']");
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
 };
 
 const navigationKeyModal = (event) => {
@@ -19,10 +19,10 @@ const displayModal = () => {
     modal.style.display = 'block';
     document.addEventListener('keydown', (e) => navigationKeyModal(e));
     // disable tabindex into DOM
-    const allTabIndexModal = document.querySelectorAll("[tabindex='-1']");
-    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '1'));
     const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-2'));
+    const allTabIndexModal = document.querySelectorAll("[tabindex='-1']");
+    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '0'));
 };
 
 /// //// FUNCTION SIGNAL TO USER IF DATA SUCCESS OR DATA ERROR ///////////
@@ -38,7 +38,7 @@ const dataChecked = (element) => {
 // set red background  and set attribute data-error
 const dataError = (element) => {
     element.parentElement.setAttribute('data-error-visible', 'true');
-    element.parentElement.setAttribute('tabindex', '1');
+    element.parentElement.setAttribute('tabindex', '0');
     const arrayAttributes = Object.values(element.parentElement.attributes);
     // if error , focus on element to listen aria label msg error
     arrayAttributes.forEach(((attr) => {

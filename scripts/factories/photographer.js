@@ -58,13 +58,13 @@ class PhotographerFactory {
     }
 
     get getUserHeaderDOM() {
-        document.title = `Fisheye - Page du Photographe ${this.photograph.name}`;
+        document.title = `Fisheye - Photographe ${this.photograph.name}`;
         // part Details
         const divDetail = document.querySelector(
             '.photograph__header-details',
         );
         const h1 = document.createElement('h1');
-        h1.setAttribute('aria-label', `Page de Présentation des Oeuvres du Photographe : ${this.photograph.name}`);
+        h1.setAttribute('aria-label', `Présentation des Oeuvres du Photographe : ${this.photograph.name}`);
         h1.innerText = this.photograph.name;
         h1.setAttribute('tabindex', '0');
         divDetail.appendChild(h1);

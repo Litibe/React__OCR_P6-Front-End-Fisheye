@@ -49,6 +49,7 @@ const updateSelectSort = async (e) => {
         (element) => {
             if (element.innerText === e.target.innerText) {
                 element.setAttribute('id', 'btn-selected');
+                element.setAttribute('aria-selected', 'true');
                 elementId = element;
             } else {
                 element.removeAttribute('id');

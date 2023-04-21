@@ -22,12 +22,13 @@ const updatePhotoIntoLightbox = (media) => {
         if (attr.name !== 'class') { mediaBox.setAttribute(attr.name, attr.value); }
     }));
     const originalSrc = (mediaBox.getAttribute('src')).replace('thumbnail/', '');
-    mediaBox.setAttribute('src', originalSrc);
-    mediaBox.setAttribute('aria-label', `Media ${media.firstChild.getAttribute('aria-label')} ouvert en plein-écran`);
     mediaBox.setAttribute('tabindex', '0');
+    mediaBox.setAttribute('src', originalSrc);
+    mediaBox.setAttribute('alt', '');
+    mediaBox.setAttribute('title', `${media.firstChild.getAttribute('title')} en plein-écran`);
     container.appendChild(mediaBox);
     mediaBox.focus();
-    titleMediaBox.innerHTML = media.firstChild.getAttribute('aria-label').replace('Photo ', '');
+    titleMediaBox.innerHTML = media.firstChild.getAttribute('title').replace('Photo ', '');
 };
 
 const nextPhoto = () => {
