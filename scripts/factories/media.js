@@ -77,7 +77,7 @@ class MediaFactory {
             const iconLike = document.createElement('button');
             iconLike.innerHTML = '<strong class="fa-solid fa-heart addLike"></strong>';
             iconLike.setAttribute('tabindex', '0');
-            iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer pour ajouter un like sur le Media');
+            iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer ou touche entrer pour ajouter un like sur le Media');
 
             const integrationNewLike = (divImgLikes) => {
                 const titleLike = divImgLikes.parentElement.children[0].innerText;
@@ -91,6 +91,7 @@ class MediaFactory {
                     nberLikes.setAttribute('aria-label', `Nombre de Likes sur le Media : ${parseInt(nberLike, 10) + 1}`);
                     totalLikes.innerText = parseInt(totalLikes.innerText, 10) + 1; // innertext
                     totalLikes.setAttribute('aria-label', `Nombre Total de Likes : ${parseInt(totalLikes.innerText, 10) + 1}`);
+                    iconLike.setAttribute('aria-label', 'Icône Coeur, Vous avez  ajouté un like sur le Media');
                 }
             };
 

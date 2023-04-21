@@ -23,7 +23,7 @@ const updatePhotoIntoLightbox = (media) => {
     }));
     const originalSrc = (mediaBox.getAttribute('src')).replace('thumbnail/', '');
     mediaBox.setAttribute('src', originalSrc);
-    mediaBox.setAttribute('aria-label', `Media ${media.firstChild.getAttribute('alt')} ouvert en plein-écran`);
+    mediaBox.setAttribute('aria-label', `Media ${media.firstChild.getAttribute('aria-label')} ouvert en plein-écran`);
     mediaBox.setAttribute('tabindex', '0');
     container.appendChild(mediaBox);
     mediaBox.focus();
@@ -83,6 +83,8 @@ const closeLightbox = () => {
     document.querySelector('main').setAttribute('aria-hidden', 'false');
     document.querySelector('main').style = 'filter: blur(0px)';
     // enable tabindex into DOM
+    const allTabIndexLightbox = document.querySelectorAll("[tabindex='0']");
+    allTabIndexLightbox.forEach((item) => item.setAttribute('tabindex', '-2'));
     const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
 };
@@ -113,6 +115,8 @@ const displayLightbox = () => {
     // disable tabindex into DOM
     const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
+    const allTabIndexLightbox = document.querySelectorAll("[tabindex='-2']");
+    allTabIndexLightbox.forEach((item) => item.setAttribute('tabindex', '0'));
 };
 
 const openPhoto = (divPhoto) => {

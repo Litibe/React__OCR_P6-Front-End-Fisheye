@@ -67,7 +67,6 @@ const updateSelectSort = async (e) => {
     if (elementId !== undefined && e.clientX === 0) {
         elementId.remove();
         document.querySelector('.dropdown-items').appendChild(elementId);
-        // document.querySelector('.dropdown-items').lastChild.focus();
     }
     return true;
 };

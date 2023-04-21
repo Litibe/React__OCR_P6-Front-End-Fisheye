@@ -38,7 +38,7 @@ const dataChecked = (element) => {
 // set red background  and set attribute data-error
 const dataError = (element) => {
     element.parentElement.setAttribute('data-error-visible', 'true');
-    element.parentElement.setAttribute('tabindex', '2');
+    element.parentElement.setAttribute('tabindex', '1');
     const arrayAttributes = Object.values(element.parentElement.attributes);
     // if error , focus on element to listen aria label msg error
     arrayAttributes.forEach(((attr) => {
@@ -155,10 +155,11 @@ document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     btnSubmit.classList.add('d-none');
     document.documentElement.style.setProperty('--modal-after-display', 'flex');
-    const allTabIndexModal = document.querySelectorAll("[tabindex='2']");
-    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-2'));
+    const allTabIndexModal = document.querySelectorAll("[tabindex='1']");
+    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-1'));
     document.querySelector('.modal').setAttribute('aria-label', "Message envoyé, Merci de votre intêret envers l'artiste");
-    document.querySelector('.modal').setAttribute('tabindex', '2');
+    document.querySelector('.modal').setAttribute('tabindex', '0');
+    document.querySelector('.btn__modal-close').setAttribute('tabindex', '0');
     controlForm.set('photographer_name', document.querySelector('h1').innerText);
     controlForm.set('photographer_id', idUrl);
     const dataJsonAPI = Object.fromEntries(controlForm);
