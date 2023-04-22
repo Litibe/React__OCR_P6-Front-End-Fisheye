@@ -155,7 +155,7 @@ document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
     btnSubmit.classList.add('d-none');
     document.documentElement.style.setProperty('--modal-after-display', 'flex');
-    const allTabIndexModal = document.querySelectorAll("[tabindex='1']");
+    const allTabIndexModal = document.querySelectorAll("[tabindex='0']");
     allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-1'));
     document.querySelector('.modal').setAttribute('aria-label', "Message envoyé, Merci de votre intêret envers l'artiste");
     document.querySelector('.modal').setAttribute('tabindex', '0');

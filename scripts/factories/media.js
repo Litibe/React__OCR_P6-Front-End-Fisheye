@@ -22,7 +22,7 @@ class MediaFactory {
                 img.setAttribute('src', pictureSrc);
                 img.setAttribute(
                     'title',
-                    `Photo ${element.title}`,
+                    `${element.title}`,
                 );
                 img.setAttribute('alt', '');
                 const imgContainer = document.createElement('div');

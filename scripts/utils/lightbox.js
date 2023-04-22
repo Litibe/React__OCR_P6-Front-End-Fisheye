@@ -2,7 +2,7 @@ const updatePhotoIntoLightbox = (media) => {
     const container = document.querySelector(
         '.lightbox-loading-container',
     );
-    container.setAttribute('tabindex', '-1');
+    container.setAttribute('tabindex', '0');
     // delete ancious media support
     if (container.children[1] !== undefined) {
         container.children[1].remove();
@@ -28,7 +28,7 @@ const updatePhotoIntoLightbox = (media) => {
     mediaBox.setAttribute('title', `${media.firstChild.getAttribute('title')} en plein-écran`);
     container.appendChild(mediaBox);
     mediaBox.focus();
-    titleMediaBox.innerHTML = media.firstChild.getAttribute('title').replace('Photo ', '');
+    titleMediaBox.innerHTML = media.firstChild.getAttribute('title');
 };
 
 const nextPhoto = () => {
@@ -78,16 +78,14 @@ const previousPhoto = () => {
 };
 
 const closeLightbox = () => {
-    document.getElementById('lightbox_modal').style.display = 'none';
-    document.querySelector('header').setAttribute('aria-hidden', 'false');
-    document.querySelector('header').style = 'filter: blur(0px)';
-    document.querySelector('main').setAttribute('aria-hidden', 'false');
-    document.querySelector('main').style = 'filter: blur(0px)';
-    // enable tabindex into DOM
-    const allTabIndexLightbox = document.querySelectorAll("[tabindex='0']");
-    allTabIndexLightbox.forEach((item) => item.setAttribute('tabindex', '-2'));
-    const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
+    if (document.getElementById('lightbox_modal').style.display !== 'none') {
+        document.getElementById('lightbox_modal').style.display = 'none';
+        // enable tabindex into DOM
+        const allTabIndexLightbox = document.querySelectorAll("[tabindex='0']");
+        allTabIndexLightbox.forEach((item) => item.setAttribute('tabindex', '-2'));
+        const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
+        allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
+    }
 };
 
 const navigationKey = (event) => {
@@ -98,26 +96,26 @@ const navigationKey = (event) => {
     } else if (event.key === 'Escape') {
         closeLightbox();
     } else if (event.key === 'Enter') {
-        if (event.srcElement.lastChild.className === 'fa-solid fa-chevron-left') {
-            previousPhoto();
-        } else if (event.srcElement.lastChild.className === 'fa-solid fa-chevron-right') {
-            nextPhoto();
+        if (event.srcElement.localName === 'button') {
+            if (event.srcElement.lastChild.className === 'fa-solid fa-chevron-left') {
+                previousPhoto();
+            } else if (event.srcElement.lastChild.className === 'fa-solid fa-chevron-right') {
+                nextPhoto();
+            }
         }
     }
 };
 
 const displayLightbox = () => {
-    document.getElementById('lightbox_modal').style.display = 'flex';
-    document.querySelector('header').setAttribute('aria-hidden', 'true');
-    document.querySelector('header').style = 'filter: blur(2px)';
-    document.querySelector('main').setAttribute('aria-hidden', 'true');
-    document.querySelector('main').style = 'filter: blur(2px)';
-    document.addEventListener('keydown', (e) => navigationKey(e));
-    // disable tabindex into DOM
-    const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
-    const allTabIndexLightbox = document.querySelectorAll("[tabindex='-2']");
-    allTabIndexLightbox.forEach((item) => item.setAttribute('tabindex', '0'));
+    if (document.getElementById('lightbox_modal').style.display !== 'flex') {
+        document.getElementById('lightbox_modal').style.display = 'flex';
+        document.addEventListener('keydown', (e) => navigationKey(e));
+        // disable tabindex into DOM
+        const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
+        allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
+        const allTabIndexLightbox = document.querySelectorAll("[tabindex='-2']");
+        allTabIndexLightbox.forEach((item) => item.setAttribute('tabindex', '0'));
+    }
 };
 
 const openPhoto = (divPhoto) => {
@@ -127,12 +125,18 @@ const openPhoto = (divPhoto) => {
         .querySelector('.fa-chevron-right')
         .addEventListener(
             'click',
-            (e) => nextPhoto(),
+            () => nextPhoto(),
         );
     document
         .querySelector('.fa-chevron-left')
         .addEventListener(
             'click',
-            (e) => previousPhoto(),
+            () => previousPhoto(),
+        );
+    document
+        .querySelector('#btnLightboxClose')
+        .addEventListener(
+            'click',
+            () => closeLightbox(),
         );
 };
