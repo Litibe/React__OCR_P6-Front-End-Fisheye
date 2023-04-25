@@ -38,8 +38,8 @@
   <div id="contact_modal">
     <div class="modal" role="dialog" aria-label="Fenetre Modale pour Formulaire de contact">
       <div class="modal-header" id="modalTitle">
-        <h2 tabindex="-1">Contactez-moi</h2>
-        <button tabindex="-1" aria-label="Croix de fermeture" onclick="closeModal()" type="button"
+        <h2 tabindex="-3">Contactez-moi</h2>
+        <button tabindex="-3" aria-label="Croix de fermeture" onclick="closeModal()" type="button"
           class="btn__modal-close"><img src="assets/icons/close.svg" alt="Close X"
             aria-label="Croix de fermeture"></button>
       </div>
@@ -47,28 +47,28 @@
         <h2 id="namePhotographerForm">Photographer
         </h2>
         <div class="formData">
-          <label tabindex="-1" for="firstname">Prénom</label>
-          <input tabindex="-1" class="text-control" type="text" id="firstname" name="firstname"
+          <label tabindex="-3" for="firstname">Prénom</label>
+          <input tabindex="-3" class="text-control" type="text" id="firstname" name="firstname"
             autocomplete="given-name" autofocus onchange="checkInputText(this)" required aria-required=true
             placeholder="ex: John">
         </div>
         <div class="formData">
-          <label tabindex="-1" for="lastname">Nom</label>
-          <input tabindex="-1" class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
+          <label tabindex="-3" for="lastname">Nom</label>
+          <input tabindex="-3" class="text-control" type="text" id="lastname" name="lastname" autocomplete="family-name"
             onchange="checkInputText(this)" required aria-required=true placeholder="ex: Doe">
         </div>
         <div class="formData">
-          <label tabindex="-1" for="email">E-mail</label>
-          <input tabindex="-1" class="text-control" type="email" id="email" name="email" autocomplete="email"
+          <label tabindex="-3" for="email">E-mail</label>
+          <input tabindex="-3" class="text-control" type="email" id="email" name="email" autocomplete="email"
             onchange="checkValueEmail(this)" required aria-required=true placeholder="ex: adresse@domaine.fr">
         </div>
         <div class="formData">
-          <label tabindex="-1" for="msg">Votre message</label>
-          <textarea tabindex="-1" class="text-area" id="msg" name="msg" required aria-required=true rows="5"
+          <label tabindex="-3" for="msg">Votre message</label>
+          <textarea tabindex="-3" class="text-area" id="msg" name="msg" required aria-required=true rows="5"
             placeholder="ex: Je souhaite un renseignement sur ..."></textarea>
         </div>
         <div class="formData">
-          <input tabindex="-1" class="btn-submit send_button" type="button" value="Envoyer">
+          <input tabindex="-3" class="btn-submit send_button" type="button" value="Envoyer">
         </div>
       </form>
     </div>

@@ -3,8 +3,8 @@ const closeModal = () => {
     modal.style.display = 'none';
     // enable tabindex into DOM
     const allTabIndexModal = document.querySelectorAll("[tabindex='0']");
-    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-1'));
-    const allTabIndexHeader = document.querySelectorAll("[tabindex='-2']");
+    allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '-3'));
+    const allTabIndexHeader = document.querySelectorAll("[tabindex='-1']");
     allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '0'));
 };
 
@@ -20,8 +20,8 @@ const displayModal = () => {
     document.addEventListener('keydown', (e) => navigationKeyModal(e));
     // disable tabindex into DOM
     const allTabIndexHeader = document.querySelectorAll("[tabindex='0']");
-    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-2'));
-    const allTabIndexModal = document.querySelectorAll("[tabindex='-1']");
+    allTabIndexHeader.forEach((item) => item.setAttribute('tabindex', '-1'));
+    const allTabIndexModal = document.querySelectorAll("[tabindex='-3']");
     allTabIndexModal.forEach((item) => item.setAttribute('tabindex', '0'));
 };
 
