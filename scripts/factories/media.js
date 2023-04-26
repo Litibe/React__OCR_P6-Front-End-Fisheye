@@ -83,7 +83,18 @@ class MediaFactory {
                 const titleLike = divImgLikes.parentElement.children[0].innerText;
                 const nberLike = divImgLikes.children[0].innerText;
                 const totalLikes = document.querySelector('.totalLikes');
-                if (!this.addLikes.has(titleLike)) {
+                if (this.addLikes.has(titleLike) && this.addLikes.get(titleLike) === true) {
+                    // remove like
+                    this.addLikes.set(titleLike, false);
+                    divImgLikes.children[0].innerText = (
+                        parseInt(nberLike, 10) - 1);
+                    // update aria label after add likes
+                    nberLikes.setAttribute('aria-label', `Nombre de Likes sur le Media : ${parseInt(nberLike, 10) - 1}`);
+                    totalLikes.innerText = parseInt(totalLikes.innerText, 10) - 1; // innertext
+                    totalLikes.setAttribute('aria-label', `Nombre Total de Likes : ${parseInt(totalLikes.innerText, 10) - 1}`);
+                    iconLike.setAttribute('aria-label', 'Icône Coeur, cliquer ou touche entrer pour ajouter un like sur le Media');
+                } else {
+                    // add like
                     this.addLikes.set(titleLike, true);
                     divImgLikes.children[0].innerText = (
                         parseInt(nberLike, 10) + 1);
@@ -91,7 +102,7 @@ class MediaFactory {
                     nberLikes.setAttribute('aria-label', `Nombre de Likes sur le Media : ${parseInt(nberLike, 10) + 1}`);
                     totalLikes.innerText = parseInt(totalLikes.innerText, 10) + 1; // innertext
                     totalLikes.setAttribute('aria-label', `Nombre Total de Likes : ${parseInt(totalLikes.innerText, 10) + 1}`);
-                    iconLike.setAttribute('aria-label', 'Icône Coeur, Vous avez  ajouté un like sur le Media');
+                    iconLike.setAttribute('aria-label', 'Icône Coeur, Vous avez ajouté un like sur le Media, cliquer ou touche entrer pour retirer votre like sur le Media');
                 }
             };
 
@@ -155,11 +166,19 @@ class MediaFactory {
         } if (word === 'Titre') {
             this.sortKey = 'title';
         }
-        this.mediasPhotographer.sort((a, b) => {
-            if (a[this.sortKey] < b[this.sortKey]) return -1;
-            if (a[this.sortKey] > b[this.sortKey]) return 1;
-            return 0;
-        });
+        if (this.sortKey === 'likes') {
+            this.mediasPhotographer.sort((a, b) => {
+                if (a[this.sortKey] < b[this.sortKey]) return 1;
+                if (a[this.sortKey] > b[this.sortKey]) return -1;
+                return 0;
+            });
+        } else {
+            this.mediasPhotographer.sort((a, b) => {
+                if (a[this.sortKey] < b[this.sortKey]) return -1;
+                if (a[this.sortKey] > b[this.sortKey]) return 1;
+                return 0;
+            });
+        }
         return this.mediasPhotographer;
     }
 }
